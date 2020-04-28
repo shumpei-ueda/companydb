@@ -1,0 +1,2 @@
+class YahooApiManage < ApplicationRecord
+end

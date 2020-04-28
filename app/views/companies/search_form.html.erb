@@ -1,0 +1,27 @@
+
+<div class="main">
+  <div class="container-co">
+    <div class="form-heading-co">企業検索</div>
+    <div class="form users-form">
+      <div class="form-body">
+        <% if @error_message %>
+          <div class="form-error">
+            <%= @error_message %>
+          </div>
+        <% end %>
+
+        <%= form_tag("/companies/search") do %>
+          <p>企業名</p>
+          <input name="company_name" value="">
+          <p>業界</p>
+          <%= select_tag 'industries', options_from_collection_for_select(@industries, :id, :name , ""),:multiple => true %>
+          <p>業種</p>
+          <%= select_tag 'sectors', options_from_collection_for_select(@sectors, :id, :name , ""),:multiple => true %>
+          <p>県</p>
+          <%= select_tag 'prefectures', options_from_collection_for_select(@prefectures, :id, :name , ""),:multiple => true %>
+          <input type="submit" value="検索">
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
