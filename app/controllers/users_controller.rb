@@ -79,4 +79,6 @@ class UsersController < ApplicationController
     flash[:notice] = "ログアウトしました"
     redirect_to("/login")
   end
+
+
 end
