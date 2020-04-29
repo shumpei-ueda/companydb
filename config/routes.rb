@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'customers/new'
+  post 'customers/create' => "customers#create"
   get 'get_companies/get_from_api'
   get 'companies/new'
   get 'companies/search' => "companies#search_form"
@@ -12,5 +14,6 @@ Rails.application.routes.draw do
   post 'users/:id/update' => "users#update"
   get 'home/top'
   post 'logout' => "users#logout"
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

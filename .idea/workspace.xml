@@ -177,7 +177,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587658392404</updated>
-      <workItem from="1587658393608" duration="89051000" />
+      <workItem from="1587658393608" duration="92939000" />
     </task>
     <servers />
   </component>
@@ -200,6 +200,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/pj_apo@crawler.rcov" NAME="crawler Coverage Results" MODIFIED="1587961467004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib" MODULE_NAME="pj_apo" />
-    <SUITE FILE_PATH="coverage/pj_apo@Development__pj_apo.rcov" NAME="Development: pj_apo Coverage Results" MODIFIED="1587908879230" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="pj_apo" />
+    <SUITE FILE_PATH="coverage/pj_apo@Development__pj_apo.rcov" NAME="Development: pj_apo Coverage Results" MODIFIED="1588174067604" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="pj_apo" />
   </component>
 </project>

@@ -15,11 +15,7 @@ class ApplicationController < ActionController::Base
   def forbid_login_user
     if @current_user
       flash[:notice] = "すでにログインしています"
-      if @current_user.mentor
-        redirect_to("/mentors/#{@current_user.mentor.id}/")
-      else
-        redirect_to("/students/#{@current_user.student.id}/")
-      end
+        redirect_to("/companies/search")
 
     end
   end
