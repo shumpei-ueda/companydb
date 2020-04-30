@@ -18,19 +18,25 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+rails_env = ENV['RAILS_ENV'] || :development
+if rails_env == :development
+  path =  "/Users/shumpei.ueda/RubymineProjects/Companydb"
+else
+  path = "/var/www/rails/companydb"
+end
 
-set :environment, "development"
+set :environment, rails_env
 set :output, 'log/cron.log'
-set :path, "/Users/shumpei.ueda/RubymineProjects/pj_apo"
+set :path, path
 
 
 
-every 1.days do
+every 1.minutes do
   rake "company:get_companies_from_api"
 end
 
 
-every 1.days do
+every 10.minutes do
   rake "reflect_db:reflect_from_yahoo_data"
 end
 
