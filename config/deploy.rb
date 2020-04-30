@@ -28,7 +28,9 @@ set :log_level, :debug
 namespace :deploy do
   desc 'Restart application'
   task :restart do
-    invoke 'unicorn:restart'
+    on roles(:app) do
+      invoke 'unicorn:restart'
+    end
   end
 
   desc 'Create database'
