@@ -1,3 +1,5 @@
+gem "activerecord-import"
+
 require "open-uri"
 require "nokogiri"
 
@@ -32,7 +34,7 @@ module Crawler extend self
           sleep 1
           begin
             company_links = "#{base_url}/#{region}/list/#{ is_only ? "only/" : ""}#{ page > 1 ? "pg#{page}" : "" }"
-            p company_links
+            p "reading #{company_links}"
             res = open(company_links, { redirect: false })
           rescue => e
             p e
@@ -73,9 +75,9 @@ module Crawler extend self
                   company_hash[:web_url] = data
               end
             end
-            companies << company_hash
+            companies << MynaviTenshoku.new(company_hash)
           end
-
+          MynaviTenshoku.import companies
           page += 1
         end
       end
