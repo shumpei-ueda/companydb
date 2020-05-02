@@ -18,8 +18,8 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
-rails_env = ENV['RAILS_ENV'] || :development
-if rails_env == :development
+rails_env = ENV['RAILS_ENV'] || "development"
+if rails_env == "development"
   path =  "/Users/shumpei.ueda/RubymineProjects/Companydb"
 else
   path = "/var/www/rails/companydb"
