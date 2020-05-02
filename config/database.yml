@@ -82,4 +82,4 @@ production:
   <<: *default
   database: companydb_production
   username: postgres
-  password: <%= ENV['companydb_DATABASE_PASSWORD'] %>
+  password: Shun10135102

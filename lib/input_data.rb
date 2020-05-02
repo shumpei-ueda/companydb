@@ -17,6 +17,5 @@ module InputData extend self
 
   def input_city
 
-
   end
 end
