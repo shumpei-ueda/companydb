@@ -20,7 +20,3 @@ orders_csv.each do |row|
   # idを除くカラム名を記述する
 end
 
-# productsテーブル
-products_csv = CSV.readlines("db/products.csv")
-products_csv.shift
-# 以下略
