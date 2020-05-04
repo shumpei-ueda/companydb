@@ -32,6 +32,8 @@ gem 'whenever', require: false
 
 gem 'rename'
 
+gem 'activerecord-import'
+
 gem 'listen', '>= 3.0.5', '< 3.2'
 
 group :development, :test do

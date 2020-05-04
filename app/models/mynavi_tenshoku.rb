@@ -1,0 +1,2 @@
+class MynaviTenshoku < ApplicationRecord
+end
