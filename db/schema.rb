@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_014152) do
+ActiveRecord::Schema.define(version: 2020_05_04_030743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,30 @@ ActiveRecord::Schema.define(version: 2020_05_04_014152) do
     t.string "established_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "a"
+    t.string "c"
+    t.string "d"
+    t.string "e"
+    t.string "h"
+    t.string "i"
+    t.string "m"
+    t.string "n"
+    t.string "o"
+    t.string "p"
+    t.string "q"
+    t.string "r"
+    t.string "s"
+    t.string "t"
+    t.string "u"
+    t.string "v"
+    t.string "w"
+    t.string "x"
+    t.string "y"
+    t.string "z"
+    t.string "aa"
+    t.string "ab"
+    t.string "ac"
+    t.string "ad"
   end
 
   create_table "company_email_addresses", force: :cascade do |t|

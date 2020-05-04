@@ -8,7 +8,6 @@ class CreateCompanyData < ActiveRecord::Migration[6.0]
       t.string :address
       t.string :established_date
 
-
       t.timestamps
     end
   end
