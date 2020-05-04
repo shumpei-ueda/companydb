@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_02_214010) do
+ActiveRecord::Schema.define(version: 2020_05_04_084924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_05_02_214010) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "prefecture_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -74,6 +75,39 @@ ActiveRecord::Schema.define(version: 2020_05_02_214010) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "company_data", force: :cascade do |t|
+    t.string "name"
+    t.bigint "corporate_num"
+    t.string "prefecture"
+    t.string "city"
+    t.string "address"
+    t.string "established_date"
+    t.string "a"
+    t.string "c"
+    t.string "d"
+    t.string "e"
+    t.string "h"
+    t.string "i"
+    t.string "m"
+    t.string "n"
+    t.string "o"
+    t.string "p"
+    t.string "q"
+    t.string "r"
+    t.string "s"
+    t.string "t"
+    t.string "u"
+    t.string "v"
+    t.string "w"
+    t.string "x"
+    t.string "y"
+    t.string "z"
+    t.string "aa"
+    t.string "ab"
+    t.string "ac"
+    t.string "ad"
   end
 
   create_table "company_email_addresses", force: :cascade do |t|
@@ -188,18 +222,6 @@ ActiveRecord::Schema.define(version: 2020_05_02_214010) do
 
   create_table "media", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "mynavi_tenshokus", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.string "president_name"
-    t.string "capital"
-    t.string "employees"
-    t.string "established_date"
-    t.string "web_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
