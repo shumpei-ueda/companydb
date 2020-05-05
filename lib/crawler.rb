@@ -38,7 +38,12 @@ module Crawler extend self
             p "reading #{company_links}"
             res = open(company_links, { redirect: false })
           rescue => e
-            p e
+            if e.message == "301 301"
+              p "finish reading #{base_url}/#{region}/list/#{ is_only ? "only/" : ""}"
+            else
+              p e
+            end
+
             break
           end
 
