@@ -1,0 +1,2 @@
+class PrTime < ApplicationRecord
+end

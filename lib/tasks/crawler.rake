@@ -10,7 +10,7 @@ namespace :crawler do
   end
 
   desc "PR TIMESをクローリングする"
-  task crawling_prtimes: :environment do
+  task crawling_pr_times: :environment do
     Crawler.crawling_pr_times
   end
 end
