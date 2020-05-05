@@ -8,4 +8,9 @@ namespace :crawler do
   task crawling_mynavi_tenshoku: :environment do
     Crawler.crawling_mynavi_tenshoku
   end
+
+  desc "PR TIMESをクローリングする"
+  task crawling_pr_times: :environment do
+    Crawler.crawling_pr_times
+  end
 end

@@ -22,5 +22,8 @@ module Companydb
 
     # 特にここ！！Rails5から productionでも呼び出せるように設定しないといけない
     config.enable_dependency_loading = true
+
+    config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :local
   end
 end
