@@ -84,4 +84,29 @@ module Crawler extend self
     end
   end
 
+  def crawling_pr_times
+    base_url = "https://prtimes.jp/"
+    page = 1
+
+
+    while true do
+      res = open(company_links, { redirect: false })
+      begin
+        pr_links = "#{base_url}/main/list/html/index/page"
+        p "reading #{pr_links}"
+        res = open(pr_links, { redirect: false })
+      rescue => e
+        p e
+        break
+      end
+
+
+
+      page += 1
+    end
+
+
+
+  end
+
 end
