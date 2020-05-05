@@ -1,5 +1,6 @@
 gem "activerecord-import"
 
+require "uri"
 require "open-uri"
 require "nokogiri"
 
@@ -37,43 +38,65 @@ module Crawler extend self
             p "reading #{company_links}"
             res = open(company_links, { redirect: false })
           rescue => e
-            p e
+            if e.message == "301 301"
+              p "finish reading #{base_url}/#{region}/list/#{ is_only ? "only/" : ""}"
+            else
+              p e
+            end
+
             break
           end
 
           doc = Nokogiri::HTML(res)
 
           doc.css(".main_title").zip(doc.css(".recruit_footer a.entry_click")).each do |company_name, detail_link|
-            company_hash = {
-              name: "",
-              address: "",
-              president_name: "",
-              capital: "",
-              employees: "",
-              established_date: "",
-              web_url: ""
-            }
+            company_hash = {}
             company_hash[:name] = company_name.content.split(" | ")[0]
-            sleep 1
-            detail_doc = Nokogiri::HTML(open(base_url + detail_link["href"].gsub("/msg", "")))
-            detail_doc.css(".thL tr > th").zip(detail_doc.css(".thL tr > td")).each do |th, td|
-              key = th.content.strip
-              data = td.content.strip
 
-              case key
-                when "本社所在地" then
-                  company_hash[:address] = data
-                when "代表者" then
-                  company_hash[:president_name] = data
-                when "資本金" then
-                  company_hash[:capital] = data
-                when "従業員数" then
-                  company_hash[:employees] = data
-                when "設立" then
-                  company_hash[:established_date] = data
-                when "企業ホームページ" then
-                  company_hash[:web_url] = data
-              end
+            sleep 1
+            detail_link = URI.join(base_url, detail_link["href"]).to_s.gsub("/msg", "")
+            begin
+              detail_doc = Nokogiri::HTML(open(detail_link))
+            rescue => e
+              p e
+              next
+            end
+
+            case URI(detail_link).host
+              when "tenshoku.mynavi.jp" then
+                detail_doc.css(".thL tr > th").zip(detail_doc.css(".thL tr > td")).each do |th, td|
+                  key = th.content.strip
+                  data = td.content.strip
+                  case key
+                    when "設立" then
+                      company_hash[:established_date] = data
+                    when "代表者" then
+                      company_hash[:president_name] = data
+                    when "従業員数" then
+                      company_hash[:employees] = data
+                    when "資本金" then
+                      company_hash[:capital] = data
+                    when "本社所在地" then
+                      company_hash[:address] = data
+                    when "企業ホームページ" then
+                      company_hash[:web_url] = data
+                  end
+                end
+              when "mynavi.agentsearch.jp" then
+                detail_doc.css(".table-e dl > dt").zip(detail_doc.css(".table-e dl > dd")).each do |dt, dd|
+                  key = dt.content.strip
+                  data = dd.content.strip
+                  case key
+                    when "設立" then
+                      company_hash[:established_date] = data
+                    when "従業員数" then
+                      company_hash[:employees] = data
+                    when "資本金" then
+                      company_hash[:capital] = data
+                  end
+                end
+              else
+                p "new host found! #{URI(detail_link).host}"
             end
             companies << MynaviTenshoku.new(company_hash)
           end
