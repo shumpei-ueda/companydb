@@ -23,25 +23,9 @@ class CompaniesController < ApplicationController
     @sectors = Sector.all
     prefectures = params[:prefectures]
 
-    company_ids = []
-
-    company_all_ids = Company.all.pluck(:id)
-
-    company_ids_name = @company_name.present? ? Company.where('name like ?', "%#{@company_name}%").pluck(:id) : company_all_ids
-
-
-    company_ids_prefectures = prefectures.present? ? CompanyAddress.where(prefecture_id: prefectures).pluck(:company_id) : company_all_ids
-
-    dup = company_ids_name & company_ids_prefectures
-
-    company_ids << dup
-
-    company_ids.flatten!
-
-    @company_ids_uniq = company_ids.uniq
 
     @results = []
-    if @company_ids_uniq.present?
+    if @company_name.present?
       companies = Company.eager_load(:company_phone_numbers ,
                                      :company_addresses,
                                      :company_listings,
@@ -54,7 +38,7 @@ class CompaniesController < ApplicationController
                                      :company_sectors,
                                      :company_fax_numbers,
                                      :adoption_phone_numbers,
-                                     :adoption_email_addresses).where(id: @company_ids_uniq)
+                                     :adoption_email_addresses).where('name like ?', "%#{@company_name}%")
       companies.each do |company|
         company_name = company.name
         established_date = company.established_date
@@ -176,7 +160,7 @@ class CompaniesController < ApplicationController
       end
     end
 
-    @count = @company_ids_uniq.count
+    @count = @results.count
     @results
     render("companies/search_form")
 
