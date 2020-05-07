@@ -1,3 +1,22 @@
+gem "activerecord-import"
+
+def parse_capital(capital)
+  capital
+    .gsub(/[(（].*?[)）]|,/, "")
+    .gsub(/百/, "00")
+    .scan(/\d*[千万億兆]/)
+    .inject(0) {|result, c|
+      d = c[/\d+/].to_i
+      case c[-1]
+      when "万" then
+        result += d * 10_000
+      when "億" then
+        result += d * 100_000_000
+      when "兆" then
+        result += d * 1_000_000_000_000
+      end
+    }
+end
 
 module ReflectCompanies extend self
   def reflect_from_yahoo
@@ -217,4 +236,43 @@ module ReflectCompanies extend self
 
   end
 
+  def reflect_from_mynavi_tenshoku
+    mynavi_media_id = 2
+    company_media_ad_queue = []
+    company_capital_queue = []
+    company_web_url_queue = []
+    # MynaviTenshoku.where(is_reflected: false)
+
+    MynaviTenshoku.all.find_each do |record|
+      candidates = Company.where(name: record.name).to_a
+      next if candidates.size != 1 #照合が大変なのでまず社名がユニークなら入れることに
+
+      # president_name はパースが面倒
+      # employees は格納先テーブルがない
+
+      company = candidates.first
+
+      company_media_ad_queue << CompanyMediaAd.new(
+        company_id: record.id,
+        media_id: mynavi_media_id
+      )
+
+      company_capital_queue << CompanyCapital.new(
+        company_id: record.id,
+        capital: parse_capital(record.capital)
+      )
+
+      company_web_url_queue << CompanyWebUrl.new(
+        company_id: record.id,
+        web_url: record.web_url
+      )
+
+    end
+
+    CompanyMediaAd.import company_media_ad_queue
+    CompanyCapital.import company_capital_queue
+    CompanyWebUrl.import company_web_url_queue
+
+  end
+    
 end
