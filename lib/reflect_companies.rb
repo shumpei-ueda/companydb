@@ -4,7 +4,8 @@ def parse_capital(capital)
   capital
     .gsub(/[(（].*?[)）]|,/, "")
     .gsub(/百/, "00")
-    .scan(/\d*[千万億兆]/)
+    .gsub(/千/, "000")
+    .scan(/\d+[万億兆]/)
     .inject(0) {|result, c|
       d = c[/\d+/].to_i
       case c[-1]
