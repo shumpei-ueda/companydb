@@ -253,18 +253,18 @@ module ReflectCompanies extend self
       company = candidates.first
 
       company_media_ad_queue << CompanyMediaAd.new(
-        company_id: record.id,
+        company_id: company.id,
         media_id: mynavi_media_id
       )
 
       company_capital_queue << CompanyCapital.new(
-        company_id: record.id,
+        company_id: company.id,
         capital: parse_capital(record.capital)
       )
 
       company_web_url_queue << CompanyWebUrl.new(
-        company_id: record.id,
-        web_url: record.web_url
+        company_id: company.id,
+        url: record.web_url
       )
 
     end
