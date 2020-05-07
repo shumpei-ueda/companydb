@@ -7,5 +7,10 @@ namespace :reflect_db do
   task reflect_from_mynavi_tenshoku: :environment do
     ReflectCompanies.reflect_from_mynavi_tenshoku
   end
+  desc "PRTIMESから得たデータを本番に反映する"
+  task reflect_from_pr_times: :environment do
+    ReflectCompanies.reflect_from_pr_times
+  end
+
 
 end
