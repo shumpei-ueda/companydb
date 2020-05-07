@@ -16,6 +16,7 @@ class Company < ApplicationRecord
   has_many :company_facebooks
   has_many :company_twitters
   has_many :company_capitals
+  has_many :company_pr_times
 
 
 
