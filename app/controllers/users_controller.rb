@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     else
       @user.save
       flash[:notice] = "登録が完了しました"
-      redirect_to("/companies/search")
+      redirect_to("/companies/search_form")
     end
   end
 
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:notice] = "ログインしました"
-      redirect_to("/companies/search")
+      redirect_to("/companies/search_form")
     else
       @error_message = "メールアドレスまたはパスワードが間違っています"
       @email = params[:email]

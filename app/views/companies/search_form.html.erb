@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main ">
   <div class="container-co">
     <div class="form-heading-co">企業検索</div>
     <div class="form users-form">
@@ -9,7 +9,7 @@
           </div>
         <% end %>
 
-        <%= form_tag("/companies/search") do %>
+        <%= form_tag("/companies/search",method: :get) do %>
           <p>企業名</p>
           <input name="company_name" value="<%=@company_name %>">
           <p>業界</p>
@@ -65,6 +65,7 @@
 <!--        </tr>-->
       <%# end %>
 <!--    </table>-->
+    <%#= paginate(@companies) %>
   <%# end %>
 </div>
 

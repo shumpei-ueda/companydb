@@ -1,4 +1,4 @@
-<div class="main users-new">
+<div class="main ">
   <%= "結果：#{@count}件取得" %>
   <table border="5">
     <tr>
@@ -40,4 +40,5 @@
       </tr>
     <% end %>
   </table>
+  <%= paginate(@companies) %>
 </div>
