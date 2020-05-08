@@ -9,7 +9,7 @@
           </div>
         <% end %>
 
-        <%= form_tag("/companies/search",method: :get) do %>
+        <%= form_tag("/companies/search") do %>
           <p>企業名</p>
           <input name="company_name" value="<%=@company_name %>">
           <p>業界</p>
@@ -23,49 +23,48 @@
       </div>
     </div>
   </div>
-  <%# if @results.present? %>
-    <%#= "結果：#{@count}件取得" %>
-<!--    <table border="5">-->
-<!--      <tr>-->
-<!--        <th>会社名</th>-->
-<!--        <th>業界</th>-->
-<!--        <th>業種</th>-->
-<!--        <th>代表者氏名</th>-->
-<!--        <th>本社所在地</th>-->
-<!--        <th>上場区分</th>-->
-<!--        <th>設立年月日</th>-->
-<!--        <th>電話番号</th>-->
-<!--        <th>FAX番号</th>-->
-<!--        <th>採用電話番号</th>-->
-<!--        <th>採用メールアドレス</th>-->
-<!--        <th>問合せフォーム</th>-->
-<!--        <th>会社URL</th>-->
-<!--        <th>Fcebook</th>-->
-<!--        <th>Twitter</th>-->
-<!--        <th>法人番号</th>-->
-<!--      </tr>-->
-      <%# @results.each do |result| %>
-<!--        <tr>-->
-<!--          <td><%#= result[:company_name] %></td>-->
-<!--          <td><%#= result[:industry] %></td>-->
-<!--          <td><%#= result[:sector] %></td>-->
-<!--          <td><%#= result[:president_name] %></td>-->
-<!--          <td><%#= result[:address] %></td>-->
-<!--          <td><%#= result[:listing] %></td>-->
-<!--          <td><%#= result[:established_date] %></td>-->
-<!--          <td><%#= result[:phone_number] %></td>-->
-<!--          <td><%#= result[:fax_number] %></td>-->
-<!--          <td><%#= result[:adoption_phone_number] %></td>-->
-<!--          <td><%#= result[:adoption_email_address] %></td>-->
-<!--          <td><%#= result[:contact_form] %></td>-->
-<!--          <td><%#= result[:web_url] %></td>-->
-<!--          <td><%#= result[:facebook_url] %></td>-->
-<!--          <td><%#= result[:twitter_url] %></td>-->
-<!--          <td><%#= result[:corporate_num] %></td>-->
-<!--        </tr>-->
-      <%# end %>
-<!--    </table>-->
-    <%#= paginate(@companies) %>
-  <%# end %>
+  <% if @results.present? %>
+    <%= "結果：#{@count}件取得" %>
+    <table border="5">
+      <tr>
+        <th>会社名</th>
+        <th>業界</th>
+        <th>業種</th>
+        <th>代表者氏名</th>
+        <th>本社所在地</th>
+        <th>上場区分</th>
+        <th>設立年月日</th>
+        <th>電話番号</th>
+        <th>FAX番号</th>
+        <th>採用電話番号</th>
+        <th>採用メールアドレス</th>
+        <th>問合せフォーム</th>
+        <th>会社URL</th>
+        <th>Fcebook</th>
+        <th>Twitter</th>
+        <th>法人番号</th>
+      </tr>
+      <% @results.each do |result| %>
+        <tr>
+          <td><%= result[:company_name] %></td>
+          <td><%= result[:industry] %></td>
+          <td><%= result[:sector] %></td>
+          <td><%= result[:president_name] %></td>
+          <td><%= result[:address] %></td>
+          <td><%= result[:listing] %></td>
+          <td><%= result[:established_date] %></td>
+          <td><%= result[:phone_number] %></td>
+          <td><%= result[:fax_number] %></td>
+          <td><%= result[:adoption_phone_number] %></td>
+          <td><%= result[:adoption_email_address] %></td>
+          <td><%= result[:contact_form] %></td>
+          <td><%= result[:web_url] %></td>
+          <td><%= result[:facebook_url] %></td>
+          <td><%= result[:twitter_url] %></td>
+          <td><%= result[:corporate_num] %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 </div>
 
