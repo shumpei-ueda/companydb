@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_064848) do
+ActiveRecord::Schema.define(version: 2020_05_08_080818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_adoption_email_addresses_on_company_id"
   end
 
   create_table "adoption_phone_numbers", force: :cascade do |t|
@@ -31,6 +32,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_adoption_phone_numbers_on_company_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -58,6 +60,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_addresses_on_company_id"
   end
 
   create_table "company_capitals", force: :cascade do |t|
@@ -66,6 +69,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_capitals_on_company_id"
   end
 
   create_table "company_contact_forms", force: :cascade do |t|
@@ -75,6 +79,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_contact_forms_on_company_id"
   end
 
   create_table "company_data", force: :cascade do |t|
@@ -117,6 +122,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_email_addresses_on_company_id"
   end
 
   create_table "company_facebooks", force: :cascade do |t|
@@ -126,6 +132,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "source_id"
+    t.index ["company_id"], name: "index_company_facebooks_on_company_id"
   end
 
   create_table "company_fax_numbers", force: :cascade do |t|
@@ -135,6 +142,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_fax_numbers_on_company_id"
   end
 
   create_table "company_industries", force: :cascade do |t|
@@ -144,6 +152,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_industries_on_company_id"
   end
 
   create_table "company_listings", force: :cascade do |t|
@@ -152,6 +161,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_listings_on_company_id"
   end
 
   create_table "company_media_ads", force: :cascade do |t|
@@ -161,6 +171,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_media_ads_on_company_id"
   end
 
   create_table "company_phone_numbers", force: :cascade do |t|
@@ -170,6 +181,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_phone_numbers_on_company_id"
   end
 
   create_table "company_pr_times", force: :cascade do |t|
@@ -178,6 +190,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.string "pr_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_pr_times_on_company_id"
   end
 
   create_table "company_presidents", force: :cascade do |t|
@@ -187,6 +200,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_presidents_on_company_id"
   end
 
   create_table "company_sectors", force: :cascade do |t|
@@ -196,6 +210,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_sectors_on_company_id"
   end
 
   create_table "company_twitters", force: :cascade do |t|
@@ -205,6 +220,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "source_id"
+    t.index ["company_id"], name: "index_company_twitters_on_company_id"
   end
 
   create_table "company_web_urls", force: :cascade do |t|
@@ -214,6 +230,7 @@ ActiveRecord::Schema.define(version: 2020_05_08_064848) do
     t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_web_urls_on_company_id"
   end
 
   create_table "customers", force: :cascade do |t|
