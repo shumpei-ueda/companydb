@@ -25,7 +25,7 @@ class CompaniesController < ApplicationController
 
     @results = []
     if @company_name.present?
-      @companies = Company.joins(:company_media_ads).eager_load(
+      @companies = Company.eager_load(
         :company_phone_numbers,
         :company_addresses,
         :company_listings,
