@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_07_125320) do
+ActiveRecord::Schema.define(version: 2020_05_08_064848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "adoption_email_addresses", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.string "email_address"
     t.integer "source_id"
     t.integer "is_invalid"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "adoption_phone_numbers", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.string "phone_number"
     t.integer "source_id"
     t.integer "is_invalid"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_addresses", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.string "address"
     t.integer "prefecture_id"
     t.integer "city_id"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_capitals", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.bigint "capital"
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_contact_forms", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.string "contact_form_url"
     t.integer "source_id"
     t.integer "is_invalid"
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_email_addresses", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.string "email_address"
     t.integer "source_id"
     t.integer "is_invalid"
@@ -120,7 +120,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_facebooks", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.string "url"
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
@@ -129,7 +129,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_fax_numbers", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.integer "fax_number"
     t.integer "source_id"
     t.integer "is_invalid"
@@ -138,7 +138,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_industries", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.integer "industry_id"
     t.integer "source_id"
     t.integer "is_invalid"
@@ -147,7 +147,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_listings", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.integer "listed"
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_media_ads", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.integer "media_id"
     t.integer "source_id"
     t.integer "is_invalid"
@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_phone_numbers", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.string "phone_number"
     t.integer "source_id"
     t.integer "is_invalid"
@@ -173,7 +173,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_pr_times", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.datetime "pr_datetime"
     t.string "pr_url"
     t.datetime "created_at", precision: 6, null: false
@@ -181,7 +181,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_presidents", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.string "president_name"
     t.integer "source_id"
     t.integer "is_invalid"
@@ -190,7 +190,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_sectors", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.integer "sector_id"
     t.integer "source_id"
     t.integer "is_invalid"
@@ -199,7 +199,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
   end
 
   create_table "company_twitters", force: :cascade do |t|
-    t.integer "company_id"
+    t.bigint "company_id"
     t.string "url"
     t.integer "is_invalid"
     t.datetime "created_at", precision: 6, null: false
@@ -211,7 +211,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
     t.string "url"
     t.integer "source_id"
     t.integer "is_invalid"
-    t.integer "company_id"
+    t.bigint "company_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -328,4 +328,21 @@ ActiveRecord::Schema.define(version: 2020_05_07_125320) do
     t.integer "is_reflected"
   end
 
+  add_foreign_key "adoption_email_addresses", "companies"
+  add_foreign_key "adoption_phone_numbers", "companies"
+  add_foreign_key "company_addresses", "companies"
+  add_foreign_key "company_capitals", "companies"
+  add_foreign_key "company_contact_forms", "companies"
+  add_foreign_key "company_email_addresses", "companies"
+  add_foreign_key "company_facebooks", "companies"
+  add_foreign_key "company_fax_numbers", "companies"
+  add_foreign_key "company_industries", "companies"
+  add_foreign_key "company_listings", "companies"
+  add_foreign_key "company_media_ads", "companies"
+  add_foreign_key "company_phone_numbers", "companies"
+  add_foreign_key "company_pr_times", "companies"
+  add_foreign_key "company_presidents", "companies"
+  add_foreign_key "company_sectors", "companies"
+  add_foreign_key "company_twitters", "companies"
+  add_foreign_key "company_web_urls", "companies"
 end
