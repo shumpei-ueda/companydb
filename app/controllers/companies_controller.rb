@@ -25,19 +25,24 @@ class CompaniesController < ApplicationController
 
     @results = []
     if @company_name.present?
-      @companies = Company.eager_load(:company_phone_numbers,
-                                      :company_addresses,
-                                      :company_listings,
-                                      :company_presidents,
-                                      :company_web_urls,
-                                      :company_contact_forms,
-                                      :company_facebooks,
-                                      :company_twitters,
-                                      :company_industries,
-                                      :company_sectors,
-                                      :company_fax_numbers,
-                                      :adoption_phone_numbers,
-                                      :adoption_email_addresses).where('name like ?', "%#{@company_name}%")
+      @companies = Company.joins(:company_media_ads).eager_load(
+        :company_phone_numbers,
+        :company_addresses,
+        :company_listings,
+        :company_presidents,
+        :company_web_urls,
+        :company_contact_forms,
+        :company_facebooks,
+        :company_twitters,
+        :company_industries,
+        :company_sectors,
+        :company_fax_numbers,
+        :adoption_phone_numbers,
+        :adoption_email_addresses,
+        :company_media_ads
+      ).where(
+        'name like ?', "%#{@company_name}%"
+      )
       @companies.each do |company|
         company_name = company.name
         established_date = company.established_date
