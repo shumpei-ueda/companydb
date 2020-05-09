@@ -124,11 +124,13 @@ module Crawler
         break
       end
 
-      doc.css(".list-article__company-name-link").zip(doc.css(".list-article__company-name--dummy"), doc.css(".list-article__time")).each do |detail_link, company_name, time|
+
+      doc.css(".list-article__company-name-link").zip(doc.css(".list-article__company-name--dummy"), doc.css(".list-article__time"),doc.css(".list-article__link")).each do |detail_link, company_name, time,pr_url|
         company_hash = {}
         detail_link = URI.join(base_url, detail_link["href"])
         company_hash[:name] = company_name.content.strip
         company_hash[:pr_datetime] = time["datetime"].to_datetime
+        company_hash[:pr_url] =  base_url + pr_url["href"]
         sleep 1
         begin
           detail_doc = Nokogiri::HTML(open(detail_link))
