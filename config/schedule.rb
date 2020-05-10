@@ -36,8 +36,8 @@ every 1.minutes do
 end
 
 
-every 10.minutes do
-  rake "reflect_db:reflect_from_yahoo_data"
-end
+# every 10.minutes do
+#   rake "reflect_db:reflect_from_yahoo_data"
+# end
 
 
