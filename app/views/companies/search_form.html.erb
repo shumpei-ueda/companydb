@@ -17,7 +17,7 @@
         <p>業種</p>
         <%= select_tag 'sectors', options_from_collection_for_select(@sectors, :id, :name, ""), :multiple => true %>
         <p>県</p>
-        <%= select_tag 'prefectures', options_from_collection_for_select(@prefectures, :name, :name, ""), :multiple => true %>
+        <%= select_tag 'prefectures', options_from_collection_for_select(@prefectures, :id, :name, ""), :multiple => true %>
         <p>求人媒体</p>
         <%= check_box_tag(:mynavi, @use_mynavi, @use_mynavi) %>
         <%= label_tag(:mynavi, "マイナビ転職") %>
