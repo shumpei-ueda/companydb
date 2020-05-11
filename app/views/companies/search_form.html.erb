@@ -46,18 +46,20 @@
       <th>採用メールアドレス</th>
       <th>問合せフォーム</th>
       <th>会社URL</th>
-      <th>Fcebook</th>
+      <th>Facebook</th>
       <th>Twitter</th>
       <th>法人番号</th>
+      <th>PR TIMES掲載件数</th>
+      <th>マイナビ転職掲載件数</th>
     </tr>
     <% @results.each do |result| %>
     <tr>
-      <td><%= result[:company_name] %></td>
+      <td><%= result[:name] %></td>
       <td><%= result[:industry] %></td>
       <td><%= result[:sector] %></td>
       <td><%= result[:president_name] %></td>
       <td><%= result[:address] %></td>
-      <td><%= result[:listing] %></td>
+      <td><%= result[:listed] %></td>
       <td><%= result[:established_date] %></td>
       <td><%= result[:phone_number] %></td>
       <td><%= result[:fax_number] %></td>
@@ -68,6 +70,8 @@
       <td><%= result[:facebook_url] %></td>
       <td><%= result[:twitter_url] %></td>
       <td><%= result[:corporate_num] %></td>
+      <td><%= result[:prtimes_flag] %></td>
+      <td><%= result[:mynavi_flag] %></td>
     </tr>
     <% end %>
   </table>
