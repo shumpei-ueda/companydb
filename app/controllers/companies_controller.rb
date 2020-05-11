@@ -25,13 +25,13 @@ class CompaniesController < ApplicationController
     if @company_name.present?
       @companies = DemoCompany.where('name like ?', "%#{@company_name.tr("a-zA-Z", "ａ-ｚＡ-Ｚ")}%")
       @companies = @companies.where(prefecture_name: prefectures) if params[:prefectures].present?
-      @companies = @companies.where("prtimes_flag > 0") if params[:prtimes]
-      @companies = @companies.where("mynavi_flag > 0") if params[:mynavi]
+      @companies = @companies.where("prtimes_flag > 0") if @use_prtimes = !!params[:prtimes]
+      @companies = @companies.where("mynavi_flag > 0") if @use_mynavi = !!params[:mynavi]
     end
     @results = @companies
 
+    @results ||= []
     @count = @results.count
-    @results
     render("companies/search_form")
 
   end

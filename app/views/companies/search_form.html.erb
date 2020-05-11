@@ -19,9 +19,9 @@
         <p>県</p>
         <%= select_tag 'prefectures', options_from_collection_for_select(@prefectures, :name, :name, ""), :multiple => true %>
         <p>求人媒体</p>
-        <%= checkbox_tag(:mynavi) %>
+        <%= check_box_tag(:mynavi, @use_mynavi, @use_mynavi) %>
         <%= label_tag(:mynavi, "マイナビ転職") %>
-        <%= checkbox_tag(:prtimes) %>
+        <%= check_box_tag(:prtimes, @use_prtimes, @use_prtimes) %>
         <%= label_tag(:prtimes, "PR TIMES") %>
 
         <input type="submit" value="検索">
