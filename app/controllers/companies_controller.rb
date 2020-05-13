@@ -22,15 +22,15 @@ class CompaniesController < ApplicationController
     @sectors = Sector.all
     prefectures = params[:prefectures]
 
-    if @company_name.present?
-      @companies = DemoCompany.where('name like ?', "%#{@company_name.tr("a-zA-Z0-9&',.-", "ａ-ｚＡ-Ｚ０-９＆’，．－")}%")
-      @companies = @companies.where(prefecture_id: prefectures) if params[:prefectures].present?
-      @companies = @companies.where("prtimes_flag > 0") if @use_prtimes = !!params[:prtimes]
-      @companies = @companies.where("mynavi_flag > 0") if @use_mynavi = !!params[:mynavi]
-    end
-    @results = @companies
+    
+    @companies = DemoCompany
+    @companies = @companies.where('name like ?', "%#{@company_name.tr("a-zA-Z0-9&',.-", "ａ-ｚＡ-Ｚ０-９＆’，．－")}%") if @company_name.present?
+    @companies = @companies.where(prefecture_id: prefectures) if params[:prefectures].present?
+    @companies = @companies.where("prtimes_flag > 0") if @use_prtimes = !!params[:prtimes]
+    @companies = @companies.where("mynavi_flag > 0") if @use_mynavi = !!params[:mynavi]
 
-    @results ||= []
+    @results = @companies == DemoCompany || !@companies ? [] : @companies
+
     @count = @results.count
     render("companies/search_form")
 
