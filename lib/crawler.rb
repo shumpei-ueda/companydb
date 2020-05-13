@@ -138,7 +138,15 @@ module Crawler
 
   def crawling_pr_times(page: 1)
     base_url = "https://prtimes.jp"
-
+    begin
+      page = Integer(page)
+    rescue => e
+      raise "pageは数値で指定してください."
+    end
+    if page < 1 then
+      raise "pageは1以上で指定してください"
+    end
+    
     while true do
       companies = []
       sleep 1
