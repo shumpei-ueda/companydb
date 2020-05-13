@@ -26,11 +26,39 @@ module Crawler
 
   end
 
-  def crawling_mynavi_tenshoku
+  def crawling_mynavi_tenshoku(_region: "hokkaido", _is_only: false, _page: 1)
+    regions = ["hokkaido", "tohoku", "kitakanto", "shutoken", "koshinetsu", "hokuriku", "tokai", "kansai", "chugoku", "shikoku", "kyushu", "global"]
+    if !regions.include?(_region) then
+      raise "regionは#{regions.join(", ")}の中から指定してください."
+    end
+    
+    if !["true", "false", false].include?(_is_only) then
+      raise "各地域のみ募集のページから始めるかを、true,falseで指定してください."
+    end
+    _is_only = _is_only == "true"
+    
+    begin
+      _page = Integer(_page)
+    rescue => e
+      raise "pageは数値で指定してください."
+    end
+    if _page < 1 then
+      raise "pageは1以上で指定してください"
+    end
+   
     base_url = "https://tenshoku.mynavi.jp"
-    ["hokkaido", "tohoku", "kitakanto", "shutoken", "koshinetsu", "hokuriku", "tokai", "kansai", "chugoku", "shikoku", "kyushu", "global"].each do |region|
+    regions[regions.index(_region)..].each do |region|
       for is_only in [false, true] do
+        if _is_only then
+          _is_only = false
+          next
+        end
+        
         page = 1
+        if _page > 1 then
+          page = _page
+          _page = 1
+        end
         while true do
           companies = []
           sleep 1
@@ -108,9 +136,8 @@ module Crawler
     end
   end
 
-  def crawling_pr_times
+  def crawling_pr_times(page: 1)
     base_url = "https://prtimes.jp"
-    page = 1
 
     while true do
       companies = []

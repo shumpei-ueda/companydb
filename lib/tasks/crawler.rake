@@ -5,12 +5,12 @@ namespace :crawler do
   end
 
   desc "マイナビ転職をクローリングする"
-  task crawling_mynavi_tenshoku: :environment do
-    Crawler.crawling_mynavi_tenshoku
+  task :crawling_mynavi_tenshoku, ['_region', '_is_only', '_page'] => :environment do |task, args|
+    Crawler.crawling_mynavi_tenshoku(args)
   end
 
   desc "PR TIMESをクローリングする"
-  task crawling_pr_times: :environment do
-    Crawler.crawling_pr_times
+  task :crawling_pr_times, ['page'] => :environment do |task, args|
+    Crawler.crawling_pr_times(args)
   end
 end
