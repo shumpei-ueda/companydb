@@ -23,6 +23,11 @@ pid $pid
 #ホットデプロイをするかしないかを設定
 preload_app true
 
+#Gemfile の位置を明示
+before_exec do |server|
+  ENV['BUNDLE_GEMFILE'] = $app_dir + "/Gemfile"
+end
+
 #fork前に行うことを定義。後述
 before_fork do |server, worker|
   defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
