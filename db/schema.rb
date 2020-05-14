@@ -262,7 +262,7 @@ ActiveRecord::Schema.define(version: 2020_05_13_202636) do
     t.bigint "mynavi_flag"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["prefecture_id"], name: "index_demo_companies_on_prefecture_id"
+    t.index ["mynavi_flag"], name: "index_demo_companies_on_mynavi_flag"
   end
 
   create_table "industries", force: :cascade do |t|
