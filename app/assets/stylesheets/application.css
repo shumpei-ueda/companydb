@@ -407,3 +407,6 @@ li {
     display: block;
 }
 
+td {
+    word-break: break-all;
+}
