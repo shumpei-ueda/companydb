@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_15_011659) do
+ActiveRecord::Schema.define(version: 2020_05_16_084818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -249,8 +249,8 @@ ActiveRecord::Schema.define(version: 2020_05_15_011659) do
     t.integer "prefecture_id"
     t.integer "city_id"
     t.string "president_name"
-    t.bigint "capital"
-    t.bigint "employee"
+    t.string "capital"
+    t.string "employee"
     t.string "listing"
     t.integer "industry_id"
     t.integer "sector_id"
