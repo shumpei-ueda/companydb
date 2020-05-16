@@ -1,22 +1,57 @@
-<div class="main users-new">
-  <div class="container">
-    <div class="form-heading">ログイン</div>
-    <div class="form users-form">
-      <div class="form-body">
-        <% if @error_message %>
-          <div class="form-error">
-            <%= @error_message %>
-          </div>
-        <% end %>
+  <body class="login-page" style="height: auto; min-height: 100%;">
+  <div class="login-box">
+    <div class="login-logo">
+      <b>デモ</b>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg">ログインはこちら</p>
 
-        <%= form_tag("/login") do %>
-          <p>メールアドレス</p>
-          <input name="email" value="<%= @email %>">
-          <p>パスワード</p>
-          <input type="password" name="password" value="<%= @password %>">
-          <input type="submit" value="ログイン">
-        <% end %>
-      </div>
+<!--      <form class="form-signin" method="post"><input type="hidden" name="csrfmiddlewaretoken" value="weLyJePU3aUtqt8RK2hMDUX8CXPSr0WcpR7phZ2ewDALV0aqPEiXo9nCFSpsDdVT">-->
+        <%= form_with url: "/login" do %>
+        <div class="form-group has-feedback">
+          <label for="inputEmail" class="sr-only"></label>
+          <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email address" required="" autofocus="">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <label for="inputPassword" class="sr-only"></label>
+          <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required="">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <!-- /.col -->
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">ログイン</button>
+          </div>
+          <!-- /.col -->
+        </div>
+          <% end %>
+      <p class="mt-5 mb-3 text-muted"><a href="http://quickwork.jp"></a>デモ</p>
     </div>
   </div>
-</div>
+
+  </body>
+
+<!--<div class="main users-new">-->
+<!--  <div class="container">-->
+<!--    <div class="form-heading">ログイン</div>-->
+<!--    <div class="form users-form">-->
+<!--      <div class="form-body">-->
+        <%# if @error_message %>
+<!--          <div class="form-error">-->
+            <%#= @error_message %>
+<!--          </div>-->
+        <%# end %>
+
+        <%#= form_tag("/login") do %>
+<!--          <p>メールアドレス</p>-->
+<!--          <input name="email" value="<%#= @email %>">-->
+<!--          <p>パスワード</p>-->
+<!--          <input type="password" name="password" value="<%#= @password %>">-->
+<!--          <input type="submit" value="ログイン">-->
+        <%# end %>
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->

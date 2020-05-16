@@ -15,7 +15,8 @@ namespace :input_data do
   end
 
   desc "テスト"
-  task test: :environment do
-    InputData.test
+  task input_to_demo: :environment do
+    InputData.input_to_demo
   end
+
 end

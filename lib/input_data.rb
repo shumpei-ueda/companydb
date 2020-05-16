@@ -120,6 +120,21 @@ module InputData
       p source
     end
   end
+
+  def input_to_demo
+    demo = []
+    companies = Company.all.find_each do |record|
+      demo << DemoCompany.new(
+                             name: record.name,
+                             corporate_num: record.corporate_num,
+                             address: record.address.present? ? record.address.address : nil
+      )
+
+    end
+    DemoCompany.import demo
+  end
+
+
 end
 
 

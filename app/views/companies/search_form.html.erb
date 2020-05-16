@@ -1,79 +1,316 @@
-<div class="main ">
-  <div class="container-co">
-    <div class="form-heading-co">企業検索</div>
-    <div class="form users-form">
-      <div class="form-body">
-        <% if @error_message %>
-        <div class="form-error">
-          <%= @error_message %>
+<div class="content-wrapper" style="min-height: 688px;">
+  <section class="content-header" id="search_condition">
+    <h1>
+      検索条件指定
+      <small>検索条件を指定してください。1企業あたり156項目のデータを付与しています。</small>
+    </h1>
+  </section>
+  <section class="content">
+    <div class="row">
+
+
+      <%= form_with url: "/companies/search" do %>
+        <input type="hidden" name="csrfmiddlewaretoken" value="moaDwOiPx61k4Kyyg1a0ussVU79A39z1f1wu4zv90zHCzhA7lDbbfHSpX2JafmyI">
+        <div class="col-lg-3 col-md-6">
+
+          <div class="box box-warning collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">フリーワード</h3>
+            </div>
+
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <label>企業名を検索</label>
+                  <input type="text" name="company_name" placeholder="検索キーワードを入力" style="width: 90%;" class="form-control" id="id_keyword">
+                </div>
+              </div>
+            </div>
+
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="text" name="notkeyword" placeholder="除外キーワードを入力" style="width: 90%;" class="form-control" id="id_notkeyword">
+                </div>
+              </div>
+            </div>
+
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <label>本社所在地を検索</label>
+                  <input type="text" name="address_keyword" placeholder="検索キーワードを入力" style="width: 90%;" class="form-control" id="id_address_keyword">
+                </div>
+              </div>
+            </div>
+
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="text" name="address_notkeyword" placeholder="除外キーワードを入力" style="width: 90%;" class="form-control" id="id_address_notkeyword">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="box box-success collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">本社所在地</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <label>都道府県を選択</label>
+                  <% @prefectures.each do |prefecture| %>
+                    <label for="id_prefecture_0"><input type="checkbox" name="prefectures" value=<%= prefecture.id %> size="3" class="flat-red" id="id_prefecture_0">
+                      <%= prefecture.name %></label>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="box box-primary collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">広報/広告/ツール</h3>
+            </div>
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+
+                  <label for="id_ad_media_0"><input type="checkbox" name="prtimes" value="1" size="3" class="flat-red" id="id_ad_media_0">
+                    PRTIMES</label>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="box box-info collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">求人媒体</h3>
+            </div>
+
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <label>新卒媒体</label>
+                </div>
+                <div class="col-md-12">
+                  <label for="id_new_graduate_0"><input type="checkbox" name="mynavi" value="1" size="3" class="flat-red" id="id_new_graduate_0">
+                    マイナビ</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <% end %>
-
-        <%= form_tag("/companies/search") do %>
-        <p>企業名</p>
-        <input name="company_name" value="<%=@company_name %>">
-        <p>業界</p>
-        <%= select_tag 'industries', options_from_collection_for_select(@industries, :id, :name, ""), :multiple => true %>
-        <p>業種</p>
-        <%= select_tag 'sectors', options_from_collection_for_select(@sectors, :id, :name, ""), :multiple => true %>
-        <p>県</p>
-        <%= select_tag 'prefectures', options_from_collection_for_select(@prefectures, :id, :name, ""), :multiple => true %>
-        <p>求人媒体</p>
-        <%= check_box_tag(:mynavi, @use_mynavi, @use_mynavi) %>
-        <%= label_tag(:mynavi, "マイナビ転職") %>
-        <%= check_box_tag(:prtimes, @use_prtimes, @use_prtimes) %>
-        <%= label_tag(:prtimes, "PR TIMES") %>
-
-        <input type="submit" value="検索">
-        <% end %>
-      </div>
+        <div class="row">
+          <div class="col-md-12" style="text-align:center">
+            <%#= form.submit %>
+            <button type="submit" class="btn btn-primary" style="width:90%" name="button1">この条件で検索する</button>
+            <!--            <input type="submit" value="検索">-->
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
-  <% if @results.present? %>
-  <%= "結果：#{@count}件取得" %>
-  <table border="5">
-    <tr>
-      <th>会社名</th>
-      <th>業界</th>
-      <th>業種</th>
-      <th>代表者氏名</th>
-      <th>本社所在地</th>
-      <th>上場区分</th>
-      <th>設立年月日</th>
-      <th>電話番号</th>
-      <th>FAX番号</th>
-      <th>採用電話番号</th>
-      <th>採用メールアドレス</th>
-      <th>問合せフォーム</th>
-      <th>会社URL</th>
-      <th>Facebook</th>
-      <th>Twitter</th>
-      <th>法人番号</th>
-      <th>PR TIMES掲載件数</th>
-      <th>マイナビ転職掲載件数</th>
-    </tr>
-    <% @results.each do |result| %>
-    <tr>
-      <td><%= result[:name] %></td>
-      <td><%= result[:industry] %></td>
-      <td><%= result[:sector] %></td>
-      <td><%= result[:president_name] %></td>
-      <td><%= result[:address] %></td>
-      <td><%= result[:listing] %></td>
-      <td><%= result[:established_date] %></td>
-      <td><%= result[:phone_number] %></td>
-      <td><%= result[:fax_number] %></td>
-      <td><%= result[:adoption_phone_number] %></td>
-      <td><%= result[:adoption_email_address] %></td>
-      <td><%= result[:contact_form] %></td>
-      <td><%= result[:web_url] %></td>
-      <td><%= result[:facebook_url] %></td>
-      <td><%= result[:twitter_url] %></td>
-      <td><%= result[:corporate_num] %></td>
-      <td><%= result[:prtimes_flag] %></td>
-      <td><%= result[:mynavi_flag] %></td>
-    </tr>
-    <% end %>
-  </table>
-  <% end %>
+  </section>
+  <section class="content-header" id="data_example">
+    <h1>
+      検索結果
+      <% if @results.present? %>
+        <small><%= "#{@count}件取得" %></small>
+      <% else %>
+        <small>検索を行うと結果が出力されます。</small>
+      <% end %>
+    </h1>
+  </section>
+  <section class="content">
+    <div class="box">
+      <div class="box-body table-responsive">
+        <table id="example1" class="table table-bordered table-striped" style="table-layout:fixed;">
+          <thead>
+          <tr>
+            <th style="width:200px;">会社名</th>
+            <th style="width:100px;">業界</th>
+            <th style="width:100px;">業種</th>
+            <th style="width:100px;">代表者氏名</th>
+            <th style="width:300px;">本社所在地</th>
+            <th style="width:100px;">上場区分</th>
+            <th style="width:100px;">設立年月日</th>
+            <th style="width:150px;">電話番号</th>
+            <th style="width:150px;">FAX番号</th>
+            <th style="width:150px;">採用電話番号</th>
+            <th style="width:150px;">採用メールアドレス</th>
+            <th style="width:150px;">問合せフォーム</th>
+            <th style="width:150px;">会社URL</th>
+            <th style="width:150px;">Facebook</th>
+            <th style="width:150px;">Twitter</th>
+            <th style="width:150px;">法人番号</th>
+            <th style="width:100px;">PR TIMES掲載件数</th>
+            <th style="width:100px;">マイナビ転職掲載件数</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% if @results.present? %>
+            <% @results.each do |result| %>
+              <tr>
+                <td><%= result[:name] %></td>
+                <!--      <td><%#= result[:industry] %></td>-->
+                <td>実装中</td>
+                <!--      <td><%#= result[:sector] %></td>-->
+                <td>実装中</td>
+                <td><%= result[:president_name] %></td>
+                <td><%= result[:address] %></td>
+                <td><%= result[:listing] %></td>
+                <td><%= result[:established_date] %></td>
+                <td><%= result[:phone_number] %></td>
+                <td><%= result[:fax_number] %></td>
+                <td><%= result[:adoption_phone_number] %></td>
+                <td><%= result[:adoption_email_address] %></td>
+                <td><%= result[:contact_form] %></td>
+                <td>
+                  <% if result[:web_url].present? %>
+                    <%= link_to result[:web_url], result[:web_url], target: :_blank %>
+                  <% else %>
+                    <%= "" %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if result[:facebook_url].present? %>
+                    <%= link_to result[:facebook_url], result[:facebook_url], target: :_blank %>
+                  <% else %>
+                    <%= "" %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if result[:twitter_url].present? %>
+                    <%= link_to result[:twitter_url], result[:twitter_url], target: :_blank %>
+                  <% else %>
+                    <%= "" %>
+                  <% end %>
+                </td>
+                <td><%= result[:corporate_num] %></td>
+                <td><%= result[:prtimes_flag] %></td>
+                <td><%= result[:mynavi_flag] %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+  </section>
 </div>
+<!--<div class="main ">-->
+<!--  <div class="container-co">-->
+<!--    <div class="form-heading-co">企業検索</div>-->
+<!--    <div class="form users-form">-->
+<!--      <div class="form-body">-->
+        <%# if @error_message %>
+<!--          <div class="form-error">-->
+            <%#= @error_message %>
+<!--          </div>-->
+        <%# end %>
+
+        <%#= form_tag("/companies/search") do %>
+<!--          <p>企業名</p>-->
+<!--          <input name="company_name" value="<%#= @company_name %>">-->
+<!--          <p>業界</p>-->
+          <%#= select_tag 'industries', options_from_collection_for_select(@industries, :id, :name, ""), :multiple => true %>
+<!--          <p>業種</p>-->
+          <%#= select_tag 'sectors', options_from_collection_for_select(@sectors, :id, :name, ""), :multiple => true %>
+<!--          <p>都道府県</p>-->
+          <%#= select_tag 'prefectures', options_from_collection_for_select(@prefectures, :id, :name, ""), :multiple => true %>
+<!--          <p>媒体掲載情報 / 掲載件数</p>-->
+          <%#= check_box_tag(:mynavi, @use_mynavi, @use_mynavi) %>
+          <%#= label_tag(:mynavi, "マイナビ転職") %>
+          <%#= check_box_tag(:prtimes, @use_prtimes, @use_prtimes) %>
+          <%#= label_tag(:prtimes, "PR TIMES") %>
+
+<!--          <input type="submit" value="検索">-->
+        <%# end %>
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+  <%# if @results.present? %>
+    <%#= "結果：#{@count}件取得" %>
+<!--    <div class="box">-->
+<!--      <div class="box-body table-responsive">-->
+<!--        <table id="example1" class="table table-bordered table-striped" style="table-layout:fixed;">-->
+<!--          <thead>-->
+<!--          <tr>-->
+<!--            <th style="width:200px;">会社名</th>-->
+<!--            <th style="width:100px;">業界</th>-->
+<!--            <th style="width:100px;">業種</th>-->
+<!--            <th style="width:100px;">代表者氏名</th>-->
+<!--            <th style="width:300px;">本社所在地</th>-->
+<!--            <th style="width:100px;">上場区分</th>-->
+<!--            <th style="width:100px;">設立年月日</th>-->
+<!--            <th style="width:150px;">電話番号</th>-->
+<!--            <th style="width:150px;">FAX番号</th>-->
+<!--            <th style="width:150px;">採用電話番号</th>-->
+<!--            <th style="width:150px;">採用メールアドレス</th>-->
+<!--            <th style="width:150px;">問合せフォーム</th>-->
+<!--            <th style="width:150px;">会社URL</th>-->
+<!--            <th style="width:150px;">Facebook</th>-->
+<!--            <th style="width:150px;">Twitter</th>-->
+<!--            <th style="width:150px;">法人番号</th>-->
+<!--            <th style="width:100px;">PR TIMES掲載件数</th>-->
+<!--            <th style="width:100px;">マイナビ転職掲載件数</th>-->
+<!--          </tr>-->
+<!--          </thead>-->
+<!--          <tbody>-->
+          <%# @results.each do |result| %>
+<!--            <tr>-->
+<!--              <td><%#= result[:name] %></td>-->
+<!--              <td><%##= result[:industry] %></td>-->
+<!--              <td>実装中</td>-->
+<!--               <td><%##= result[:sector] %></td>-->
+<!--              <td>実装中</td>-->
+<!--              <td><%#= result[:president_name] %></td>-->
+<!--              <td><%#= result[:address] %></td>-->
+<!--              <td><%#= result[:listing] %></td>-->
+<!--              <td><%#= result[:established_date] %></td>-->
+<!--              <td><%#= result[:phone_number] %></td>-->
+<!--              <td><%#= result[:fax_number] %></td>-->
+<!--              <td><%#= result[:adoption_phone_number] %></td>-->
+<!--              <td><%#= result[:adoption_email_address] %></td>-->
+<!--              <td><%#= result[:contact_form] %></td>-->
+<!--              <td>-->
+                <%# if result[:web_url].present? %>
+                  <%#= link_to result[:web_url], result[:web_url], target: :_blank %>
+                <%# else %>
+                  <%#= "" %>
+                <%# end %>
+<!--              </td>-->
+<!--              <td>-->
+                <%# if result[:facebook_url].present? %>
+                  <%#= link_to result[:facebook_url], result[:facebook_url], target: :_blank %>
+                <%# else %>
+                  <%#= "" %>
+                <%# end %>
+<!--              </td>-->
+<!--              <td>-->
+                <%# if result[:twitter_url].present? %>
+                  <%#= link_to result[:twitter_url], result[:twitter_url], target: :_blank %>
+                <%# else %>
+                  <%#= "" %>
+                <%# end %>
+<!--              </td>-->
+<!--              <td><%#= result[:corporate_num] %></td>-->
+<!--              <td><%#= result[:prtimes_flag] %></td>-->
+<!--              <td><%#= result[:mynavi_flag] %></td>-->
+<!--            </tr>-->
+          <%# end %>
+<!--          </tbody>-->
+<!--        </table>-->
+<!--      </div>-->
+<!--    </div>-->
+  <%# end %>
+<!--</div>-->

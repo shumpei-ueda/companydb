@@ -10,6 +10,399 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
  *= require_self
+ *= require_tree .
  */
+
+/* 共通レイアウト ================================ */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html, body {
+    height: 100%;
+}
+html {
+    display: block;
+}
+body {
+    font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+body {
+    margin: 0;
+}
+body {
+    display: block;
+    margin: 8px;
+}
+/* ヘッダー ================================ */
+
+.header-logo {
+    float: left;
+    padding-left: 20px;
+    color: white;
+    font-size: 22px;
+    line-height: 64px;
+}
+
+.header-logo a{
+    color: white;
+    font-size: 22px;
+}
+
+.header-menus {
+    float: right;
+    padding-right: 20px;
+}
+
+.header-menus li {
+    float: left;
+    line-height: 64px;
+    font-size: 13px;
+    color: #f4f4f4;
+    padding-left: 15px;
+}
+
+.header-menus a {
+    float: left;
+    font-size: 13px;
+    color: white;
+}
+
+.header-menus .fa {
+    padding-right: 5px;
+}
+
+.header-menus input[type="submit"] {
+    padding: 0 20px;
+    float: left;
+    line-height: 64px;
+    color: white;
+    margin: 0;
+    font-size: 13px;
+}
+
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.skin-yellow .wrapper, .skin-yellow .main-sidebar, .skin-yellow .left-side {
+    background-color: #222d32;
+}
+.wrapper {
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+.main-header {
+    position: relative;
+    max-height: 100px;
+    z-index: 1030;
+}
+.main-header .logo {
+    -webkit-transition: width .3s ease-in-out;
+    -o-transition: width .3s ease-in-out;
+    transition: width .3s ease-in-out;
+    display: block;
+    float: left;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    text-align: center;
+    width: 230px;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding: 0 15px;
+    font-weight: 300;
+    overflow: hidden;
+}
+.skin-yellow .main-header .logo {
+    background-color: #e08e0b;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+a {
+    color: #3c8dbc;
+}
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+/*a:-webkit-any-link {*/
+/*    color: -webkit-link;*/
+/*    cursor: pointer;*/
+/*    text-decoration: underline;*/
+/*}*/
+.main-header .logo .logo-mini {
+    display: none;
+}
+.main-header .logo .logo-lg {
+    display: block;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+.skin-yellow .main-header .logo {
+    background-color: #e08e0b;
+    color: #fff;
+    border-bottom: 0 solid transparent;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.main-header .navbar {
+    -webkit-transition: margin-left .3s ease-in-out;
+    -o-transition: margin-left .3s ease-in-out;
+    transition: margin-left .3s ease-in-out;
+    margin-bottom: 0;
+    margin-left: 230px;
+    border: none;
+    min-height: 50px;
+    border-radius: 0;
+}
+.skin-yellow .main-header .navbar {
+    background-color: #f39c12;
+}
+.main-header .navbar-custom-menu, .main-header .navbar-right {
+    float: right;
+}
+.navbar-custom-menu>.navbar-nav {
+    float: right;
+}
+.navbar-custom-menu .navbar-nav {
+    margin: 0;
+    float: left;
+}
+.navbar-nav {
+    float: left;
+    margin: 0;
+}
+.navbar-nav {
+    margin: 7.5px -15px;
+}
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+.navbar-static-top {
+    border-radius: 0;
+}
+.navbar-static-top {
+    z-index: 1000;
+    border-width: 0 0 1px;
+}
+.navbar {
+    border-radius: 4px;
+}
+.navbar {
+    position: relative;
+    min-height: 50px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+nav {
+    display: block;
+}
+.skin-yellow .main-header .navbar .sidebar-toggle {
+    color: #fff;
+}
+.skin-yellow .main-header .navbar .sidebar-toggle {
+    color: #fff;
+}
+.main-header .sidebar-toggle {
+    float: left;
+    background-color: transparent;
+    background-image: none;
+    padding: 15px 15px;
+    font-family: fontAwesome;
+}
+[role=button] {
+    cursor: pointer;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+.main-sidebar, .skin-yellow .left-side {
+    background-color: #222d32;
+}
+.main-sidebar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 50px;
+    min-height: 100%;
+    width: 230px;
+    z-index: 810;
+    -webkit-transition: -webkit-transform .3s ease-in-out,width .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out,width .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out,width .3s ease-in-out;
+    transition: transform .3s ease-in-out,width .3s ease-in-out;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+aside {
+    display: block;
+}
+.sidebar {
+    padding-bottom: 10px;
+}
+.sidebar-menu, .main-sidebar .user-panel, .sidebar-menu>li.header {
+    white-space: nowrap;
+    overflow: hidden;
+}
+.sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+.skin-yellow .sidebar-menu>li.header {
+    color: #4b646f;
+    background: #1a2226;
+}
+.sidebar-menu>li {
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+.sidebar-form, .sidebar-menu>li.header {
+    overflow: hidden;
+    text-overflow: clip;
+}
+.navbar-custom-menu>.navbar-nav>li {
+    position: static;
+}
+.navbar-custom-menu>.navbar-nav>li {
+    position: relative;
+}
+.navbar-custom-menu .navbar-nav>li {
+    float: left;
+}
+.navbar-nav>li {
+    float: left;
+}
+.nav>li {
+     position: relative;
+     display: block;
+}
+.user-menu-link{
+    color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    background: transparent;
+    position: relative;
+    display: block;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.sidebar-menu, .main-sidebar .user-panel, .sidebar-menu>li.header {
+    white-space: nowrap;
+    overflow: hidden;
+}
+.sidebar-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.skin-yellow .sidebar-menu>li.active>a {
+    border-left-color: #f39c12;
+}
+.sidebar-menu li.header {
+     padding: 30px 25px 10px 15px;
+     font-size: 12px;
+ }
+.sidebar-menu>li>a>.fa, .sidebar-menu>li>a>.glyphicon, .sidebar-menu>li>a>.ion {
+    width: 20px;
+}
+.text-yellow {
+    color: #f39c12 !important;
+}
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.skin-yellow .sidebar-menu>li:hover>a, .skin-yellow .sidebar-menu>li.active>a, .skin-yellow .sidebar-menu>li.menu-open>a {
+    color: #fff;
+    background: #1e282c;
+}
+.sidebar-menu>li>a {
+    padding: 12px 5px 12px 15px;
+    display: block;
+}
+
