@@ -22,6 +22,7 @@ class CompaniesController < ApplicationController
     @all_sectors = Sector.all
     @prefectures = params[:prefectures]
     @per = params[:per]
+    @order = params[:order]
 
     
     @companies = DemoCompany
@@ -29,6 +30,7 @@ class CompaniesController < ApplicationController
     @companies = @companies.where(prefecture_id: @prefectures) if @prefectures.present?
     @companies = @companies.where("prtimes_flag > 0") if @use_prtimes = !!params[:prtimes]
     @companies = @companies.where("mynavi_flag > 0") if @use_mynavi = !!params[:mynavi]
+    @companies = @companies.order(@order => "DESC") if @order.present?
 
     @results = @companies == DemoCompany || !@companies ? [] : @companies.page(params[:page]).per(@per)
 

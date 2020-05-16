@@ -24,6 +24,8 @@
         <%= check_box_tag(:prtimes, @use_prtimes, @use_prtimes) %>
         <%= label_tag(:prtimes, "PR TIMES") %>
         <input type="submit" value="検索">
+        <p>並び替え</p>
+        <%= select_tag 'order', options_for_select({"指定なし": nil, "PRTIMES掲載件数が多い順": "prtimes_flag", "マイナビ転職掲載件数が多い順": "mynavi_flag"}, @order) %>
       </div>
     </div>
   </div>
