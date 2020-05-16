@@ -9,28 +9,29 @@
         </div>
         <% end %>
 
-        <%= form_tag("/companies/search") do %>
+        <%= form_tag("/companies/search", method: :get) do %>
         <p>企業名</p>
         <input name="company_name" value="<%=@company_name %>">
         <p>業界</p>
-        <%= select_tag 'industries', options_from_collection_for_select(@industries, :id, :name, ""), :multiple => true %>
+        <%= select_tag 'industries', options_from_collection_for_select(@all_industries, :id, :name, ""), :multiple => true %>
         <p>業種</p>
-        <%= select_tag 'sectors', options_from_collection_for_select(@sectors, :id, :name, ""), :multiple => true %>
+        <%= select_tag 'sectors', options_from_collection_for_select(@all_sectors, :id, :name, ""), :multiple => true %>
         <p>県</p>
-        <%= select_tag 'prefectures', options_from_collection_for_select(@prefectures, :id, :name, ""), :multiple => true %>
+        <%= select_tag 'prefectures', options_from_collection_for_select(@all_prefectures, :id, :name, @prefectures), :multiple => true %>
         <p>求人媒体</p>
         <%= check_box_tag(:mynavi, @use_mynavi, @use_mynavi) %>
         <%= label_tag(:mynavi, "マイナビ転職") %>
         <%= check_box_tag(:prtimes, @use_prtimes, @use_prtimes) %>
         <%= label_tag(:prtimes, "PR TIMES") %>
-
         <input type="submit" value="検索">
-        <% end %>
+        <p>並び替え</p>
+        <%= select_tag 'order', options_for_select({"指定なし": nil, "PRTIMES掲載件数が多い順": "prtimes_flag", "マイナビ転職掲載件数が多い順": "mynavi_flag"}, @order) %>
       </div>
     </div>
   </div>
   <% if @results.present? %>
-  <%= "結果：#{@count}件取得" %>
+  <%= "結果：#{@count}件 " %><%= select_tag 'per', options_for_select([25, 50, 100, 200], @per), onchange: "this.form.submit()" %>件ずつ表示
+  <%= paginate @results %>
   <table border="5">
     <tr>
       <th>会社名</th>
@@ -75,5 +76,7 @@
     </tr>
     <% end %>
   </table>
+  <%= paginate @results %>
+  <% end %>
   <% end %>
 </div>
