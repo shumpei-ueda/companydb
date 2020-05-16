@@ -17,21 +17,22 @@ class CompaniesController < ApplicationController
 
   def search
     @company_name = params[:company_name]
-    @prefectures = Prefecture.all
-    @industries = Industry.all
-    @sectors = Sector.all
-    prefectures = params[:prefectures]
+    @all_prefectures = Prefecture.all
+    @all_industries = Industry.all
+    @all_sectors = Sector.all
+    @prefectures = params[:prefectures]
+    @per = params[:per]
 
     
     @companies = DemoCompany
     @companies = @companies.where('name like ?', "%#{@company_name.tr("a-zA-Z0-9&',.-", "ａ-ｚＡ-Ｚ０-９＆’，．－")}%") if @company_name.present?
-    @companies = @companies.where(prefecture_id: prefectures) if params[:prefectures].present?
+    @companies = @companies.where(prefecture_id: @prefectures) if @prefectures.present?
     @companies = @companies.where("prtimes_flag > 0") if @use_prtimes = !!params[:prtimes]
     @companies = @companies.where("mynavi_flag > 0") if @use_mynavi = !!params[:mynavi]
 
-    @results = @companies == DemoCompany || !@companies ? [] : @companies
+    @results = @companies == DemoCompany || !@companies ? [] : @companies.page(params[:page]).per(@per)
 
-    @count = @results.count
+    @count = @companies.count
     render("companies/search_form")
 
   end
