@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   post 'customers/create' => "customers#create"
   get 'get_companies/get_from_api'
   get 'companies/new'
-  get 'companies/search' => "companies#search_form"
-  post 'companies/search' => "companies#search"
+  get 'companies/search' => "companies#search"
   get 'signup' => "users#new"
   post 'users/create' => "users#create"
   get 'login' => "users#login_form"

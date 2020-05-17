@@ -9,7 +9,7 @@
     <div class="row">
 
 
-      <%= form_with url: "/companies/search" do %>
+      <%= form_with url: "/companies/search",method: :get do %>
         <input type="hidden" name="csrfmiddlewaretoken" value="moaDwOiPx61k4Kyyg1a0ussVU79A39z1f1wu4zv90zHCzhA7lDbbfHSpX2JafmyI">
         <div class="col-lg-3 col-md-6">
 
@@ -62,7 +62,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <label>都道府県を選択</label>
-                  <% @prefectures.each do |prefecture| %>
+                  <% @all_prefectures.each do |prefecture| %>
                     <label for="id_prefecture_0"><input type="checkbox" name="prefectures" value=<%= prefecture.id %> size="3" class="flat-red" id="id_prefecture_0">
                       <%= prefecture.name %></label>
                   <% end %>
@@ -105,6 +105,20 @@
               </div>
             </div>
           </div>
+          <div class="box box-info collapsed-box">
+            <div class="box-header with-border">
+              <h3 class="box-title">並び替え</h3>
+            </div>
+
+            <div class="box-body">
+              <div class="row">
+                <div class="col-md-12">
+                  <%= select_tag 'order', options_for_select({"指定なし": nil, "PRTIMES掲載件数が多い順": "prtimes_flag", "マイナビ転職掲載件数が多い順": "mynavi_flag"}, @order) %>
+                </div>
+              </div>
+            </div>
+          </div>
+
 
         </div>
         <div class="row">
@@ -121,7 +135,8 @@
     <h1>
       検索結果
       <% if @results.present? %>
-        <small><%= "#{@count}件取得" %></small>
+        <small><%= "#{@count}件取得" %><%= select_tag 'per', options_for_select([25, 50, 100, 200], @per), onchange: "this.form.submit()" %>件ずつ表示
+          <%= paginate @results %></small>
       <% else %>
         <small>検索を行うと結果が出力されます。</small>
       <% end %>
