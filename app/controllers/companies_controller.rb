@@ -20,7 +20,7 @@ class CompaniesController < ApplicationController
     @all_prefectures = Prefecture.all
     @all_industries = Industry.all
     @all_sectors = Sector.all
-    @prefectures = params[:prefectures]
+    @prefectures = params[:prefectures]&.map(&:to_i)
     @per = params[:per]
     @order = params[:order]
 
@@ -33,7 +33,6 @@ class CompaniesController < ApplicationController
     @companies = @companies.order(@order => "DESC") if @order.present?
 
     @results = @companies == DemoCompany || !@companies ? [] : @companies.page(params[:page]).per(@per)
-
     @count = @companies.count
     render("companies/search_form")
 
