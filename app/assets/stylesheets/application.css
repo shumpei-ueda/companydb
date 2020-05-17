@@ -167,7 +167,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     display: block;
 }
 .skin-yellow .main-header .logo {
-    background-color: #e08e0b;
+    background-color: lightslategray;
     color: #fff;
     border-bottom: 0 solid transparent;
 }
@@ -187,7 +187,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
     border-radius: 0;
 }
 .skin-yellow .main-header .navbar {
-    background-color: #f39c12;
+    background-color: lightslategray;
 }
 .main-header .navbar-custom-menu, .main-header .navbar-right {
     float: right;
@@ -378,7 +378,7 @@ li {
     padding: 0;
 }
 .skin-yellow .sidebar-menu>li.active>a {
-    border-left-color: #f39c12;
+    border-left-color: lightseagreen;
 }
 .sidebar-menu li.header {
      padding: 30px 25px 10px 15px;
@@ -388,7 +388,7 @@ li {
     width: 20px;
 }
 .text-yellow {
-    color: #f39c12 !important;
+    color: lightseagreen !important;
 }
 .fa {
     display: inline-block;
