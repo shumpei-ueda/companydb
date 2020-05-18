@@ -39,96 +39,96 @@
                 <div class="col-md-12">
                   <label>都道府県を選択</label>
                 </div>
-                <div class="col-md-12">
-                  <div class="hidden_box">
-                    <label class="tihou" for="label1">北海道・東北</label>
-                    <input class="hidden_button" type="checkbox" id="label1"/>
-                    <div class="hidden_show">
-                      <div class="col-md-12">
-                        <div class="prefecture">
-                          <%= f.collection_check_boxes :prefectures, @hokkaido_tohoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                        </div>
+                  <div class="col-md-12">
+                    <!--                  <div class="hidden_box">-->
+                    <label class="tihou" >北海道・東北</label>
+<!--                    <input class="hidden_button" type="checkbox" id="label1"/>-->
+                    <!--                    <div class="hidden_show">-->
+                    <div class="col-md-12 ">
+                      <div class="prefecture">
+                        <%= f.collection_check_boxes :prefectures, @hokkaido_tohoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
                       </div>
                     </div>
-                  </div>
+                    <!--                    </div>-->
+                    <!--                  </div>-->
                 </div>
                 <div class="col-md-12">
-                  <div class="hidden_box">
-                    <label class="tihou" for="label2">関東</label>
-                    <input class="hidden_button" type="checkbox" id="label2"/>
-                    <div class="hidden_show">
-                      <div class="col-md-12">
-                        <div class="prefecture">
-                          <%= f.collection_check_boxes :prefectures, @kantou, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                        </div>
-                      </div>
+                  <!--                  <div class="hidden_box">-->
+                  <label class="tihou" for="label2">関東</label>
+                  <input class="hidden_button" type="checkbox" id="label2"/>
+                  <!--                    <div class="hidden_show">-->
+                  <div class="col-md-12">
+                    <div class="prefecture">
+                      <%= f.collection_check_boxes :prefectures, @kantou, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
                     </div>
                   </div>
+                  <!--                    </div>-->
+                  <!--                  </div>-->
                 </div>
                 <div class="col-md-12">
-                  <div class="hidden_box">
-                    <label class="tihou" for="label3">北陸・東海</label>
-                    <input class="hidden_button" type="checkbox" id="label3"/>
-                    <div class="hidden_show">
-                      <div class="col-md-12">
-                        <div class="prefecture">
-                          <%= f.collection_check_boxes :prefectures, @hokuriku_toukai, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                        </div>
-                      </div>
+                  <!--                  <div class="hidden_box">-->
+                  <label class="tihou" for="label3">北陸・東海</label>
+                  <input class="hidden_button" type="checkbox" id="label3"/>
+                  <!--                    <div class="hidden_show">-->
+                  <div class="col-md-12">
+                    <div class="prefecture">
+                      <%= f.collection_check_boxes :prefectures, @hokuriku_toukai, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
                     </div>
                   </div>
+                  <!--                    </div>-->
+                  <!--                  </div>-->
                 </div>
                 <div class="col-md-12">
-                  <div class="hidden_box">
-                    <label class="tihou" for="label4">近畿</label>
-                    <input class="hidden_button" type="checkbox" id="label4"/>
-                    <div class="hidden_show">
-                      <div class="col-md-12">
-                        <div class="prefecture">
-                          <%= f.collection_check_boxes :prefectures, @kinki, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                        </div>
-                      </div>
+                  <!--                  <div class="hidden_box">-->
+                  <label class="tihou" for="label4">近畿</label>
+                  <input class="hidden_button" type="checkbox" id="label4"/>
+                  <!--                    <div class="hidden_show">-->
+                  <div class="col-md-12">
+                    <div class="prefecture">
+                      <%= f.collection_check_boxes :prefectures, @kinki, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
                     </div>
                   </div>
+                  <!--                    </div>-->
+                  <!--                  </div>-->
                 </div>
                 <div class="col-md-12">
-                  <div class="hidden_box">
-                    <label class="tihou" for="label5">中国</label>
-                    <input class="hidden_button" type="checkbox" id="label5"/>
-                    <div class="hidden_show">
-                      <div class="col-md-12">
-                        <div class="prefecture">
-                          <%= f.collection_check_boxes :prefectures, @tyugoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                        </div>
-                      </div>
+                  <!--                  <div class="hidden_box">-->
+                  <label class="tihou" for="label5">中国</label>
+                  <input class="hidden_button" type="checkbox" id="label5"/>
+                  <!--                    <div class="hidden_show">-->
+                  <div class="col-md-12">
+                    <div class="prefecture">
+                      <%= f.collection_check_boxes :prefectures, @tyugoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
                     </div>
                   </div>
+                  <!--                    </div>-->
+                  <!--                  </div>-->
                 </div>
                 <div class="col-md-12">
-                  <div class="hidden_box">
-                    <label class="tihou" for="label6">四国</label>
-                    <input class="hidden_button" type="checkbox" id="label6"/>
-                    <div class="hidden_show">
-                      <div class="col-md-12">
-                        <div class="prefecture">
-                          <%= f.collection_check_boxes :prefectures, @shikoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                        </div>
-                      </div>
+                  <!--                  <div class="hidden_box">-->
+                  <label class="tihou" for="label6">四国</label>
+                  <input class="hidden_button" type="checkbox" id="label6"/>
+                  <!--                    <div class="hidden_show">-->
+                  <div class="col-md-12">
+                    <div class="prefecture">
+                      <%= f.collection_check_boxes :prefectures, @shikoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
                     </div>
                   </div>
+                  <!--                    </div>-->
+                  <!--                  </div>-->
                 </div>
                 <div class="col-md-12">
-                  <div class="hidden_box">
-                    <label class="tihou" for="label7">九州・沖縄</label>
-                    <input class="hidden_button" type="checkbox" id="label7"/>
-                    <div class="hidden_show">
-                      <div class="col-md-12">
-                        <div class="prefecture">
-                          <%= f.collection_check_boxes :prefectures, @kyushu, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                        </div>
-                      </div>
+                  <!--                  <div class="hidden_box">-->
+                  <label class="tihou" for="label7">九州・沖縄</label>
+                  <input class="hidden_button" type="checkbox" id="label7"/>
+                  <!--                    <div class="hidden_show">-->
+                  <div class="col-md-12">
+                    <div class="prefecture">
+                      <%= f.collection_check_boxes :prefectures, @kyushu, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
                     </div>
                   </div>
+                  <!--                    </div>-->
+                  <!--                  </div>-->
                 </div>
 
               </div>
@@ -167,19 +167,19 @@
               </div>
             </div>
           </div>
-<!--          <div class="box box-info collapsed-box">-->
-<!--            <div class="box-header with-border">-->
-<!--              <h3 class="box-title">並び替え</h3>-->
-<!--            </div>-->
+          <!--          <div class="box box-info collapsed-box">-->
+          <!--            <div class="box-header with-border">-->
+          <!--              <h3 class="box-title">並び替え</h3>-->
+          <!--            </div>-->
 
-<!--            <div class="box-body">-->
-<!--              <div class="row">-->
-<!--                <div class="col-md-12">-->
-                  <%#= f.select 'order', options_for_select({"指定なし": nil, "PRTIMES掲載件数が多い順": "prtimes_flag", "マイナビ転職掲載件数が多い順": "mynavi_flag"}, @order) %>
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--          </div>-->
+          <!--            <div class="box-body">-->
+          <!--              <div class="row">-->
+          <!--                <div class="col-md-12">-->
+          <%#= f.select 'order', options_for_select({"指定なし": nil, "PRTIMES掲載件数が多い順": "prtimes_flag", "マイナビ転職掲載件数が多い順": "mynavi_flag"}, @order) %>
+          <!--                </div>-->
+          <!--              </div>-->
+          <!--            </div>-->
+          <!--          </div>-->
 
 
         </div>
@@ -205,33 +205,33 @@
       </h1>
       </section>
       <div id="pager" class="pager tablesorter-pager">
-<!--        <button type='button' class='first'>&lt;&lt;</button>-->
-<!--        <button type='button' class='prev'>&lt;</button>-->
+        <!--        <button type='button' class='first'>&lt;&lt;</button>-->
+        <!--        <button type='button' class='prev'>&lt;</button>-->
 
-<!--        <span class="pagedisplay" value=""/>-->
-<!--        <input type="text" class="pagedisplay"/>-->
+        <!--        <span class="pagedisplay" value=""/>-->
+        <!--        <input type="text" class="pagedisplay"/>-->
 
-<!--        <button type='button' class='next'>&gt;</button>-->
-<!--        <button type='button' class='last'>&gt;&gt;</button>-->
+        <!--        <button type='button' class='next'>&gt;</button>-->
+        <!--        <button type='button' class='last'>&gt;&gt;</button>-->
 
-<!--        <select class="pagesize">-->
-<!--          <option value="10">10</option>-->
-<!--          <option value="20">20</option>-->
-<!--          <option value="30">30</option>-->
+        <!--        <select class="pagesize">-->
+        <!--          <option value="10">10</option>-->
+        <!--          <option value="20">20</option>-->
+        <!--          <option value="30">30</option>-->
         <form>
-<!--          <img src="/content/lib/tablesorter/addons/pager/icons/first.png" class="first"/>-->
+          <!--          <img src="/content/lib/tablesorter/addons/pager/icons/first.png" class="first"/>-->
           <button type='button' class='first'>&lt;&lt;</button>
-<!--          <img src="/content/lib/tablesorter/addons/pager/icons/prev.png" class="prev"/>-->
+          <!--          <img src="/content/lib/tablesorter/addons/pager/icons/prev.png" class="prev"/>-->
           <button type='button' class='prev'>&lt;</button>
           <input type="text" class="pagedisplay"/>
-<!--          <img src="/content/lib/tablesorter/addons/pager/icons/next.png" class="next"/>-->
+          <!--          <img src="/content/lib/tablesorter/addons/pager/icons/next.png" class="next"/>-->
           <button type='button' class='next'>&gt;</button>
           <button type='button' class='last'>&gt;&gt;</button>
           <select class="pagesize">
-            <option selected="selected"  value="25">25</option>
+            <option selected="selected" value="25">25</option>
             <option value="50">50</option>
             <option value="100">100</option>
-            <option  value="200">200</option>
+            <option value="200">200</option>
           </select>
         </form>
         </select>
