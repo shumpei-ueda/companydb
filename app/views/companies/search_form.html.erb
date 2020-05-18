@@ -1,4 +1,6 @@
-<%= javascript_include_tag 'tablesorter_test.js' %>
+<%= javascript_include_tag 'tablesorter.js' %>
+<%#= javascript_include_tag 'pager.js' %>
+
 <div class="content-wrapper" style="min-height: 688px;">
   <section class="content-header" id="search_condition">
     <h1>
@@ -192,19 +194,52 @@
           <h1>
             検索結果
             <% if @results.present? %>
-              <small><%= "#{@count}件取得" %><%= select_tag 'per', options_for_select([25, 50, 100, 200], @per), onchange: "this.form.submit()" %>
-                件ずつ表示
-                <%= paginate @results %></small>
+              <small><%= "#{@count}件取得" %>
+                <%#= select_tag 'per', options_for_select([25, 50, 100, 200], @per), onchange: "this.form.submit()" %>
+                <%#= paginate @results %>
+              </small>
             <% else %>
               <small>検索を行うと結果が出力されます。</small>
             <% end %>
       <% end %>
       </h1>
       </section>
+      <div id="pager" class="pager tablesorter-pager">
+<!--        <button type='button' class='first'>&lt;&lt;</button>-->
+<!--        <button type='button' class='prev'>&lt;</button>-->
+
+<!--        <span class="pagedisplay" value=""/>-->
+<!--        <input type="text" class="pagedisplay"/>-->
+
+<!--        <button type='button' class='next'>&gt;</button>-->
+<!--        <button type='button' class='last'>&gt;&gt;</button>-->
+
+<!--        <select class="pagesize">-->
+<!--          <option value="10">10</option>-->
+<!--          <option value="20">20</option>-->
+<!--          <option value="30">30</option>-->
+        <form>
+<!--          <img src="/content/lib/tablesorter/addons/pager/icons/first.png" class="first"/>-->
+          <button type='button' class='first'>&lt;&lt;</button>
+<!--          <img src="/content/lib/tablesorter/addons/pager/icons/prev.png" class="prev"/>-->
+          <button type='button' class='prev'>&lt;</button>
+          <input type="text" class="pagedisplay"/>
+<!--          <img src="/content/lib/tablesorter/addons/pager/icons/next.png" class="next"/>-->
+          <button type='button' class='next'>&gt;</button>
+          <button type='button' class='last'>&gt;&gt;</button>
+          <select class="pagesize">
+            <option selected="selected"  value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option  value="200">200</option>
+          </select>
+        </form>
+        </select>
+      </div>
       <section class="content">
         <div class="box">
           <div class=" box-body-table table-responsive">
-            <table id="example1" class="table table-bordered table-striped tablesorter" style="table-layout:fixed;">
+            <table id="example1" class="table table-bordered table-striped tablesorter pager-table" style="table-layout:fixed;">
               <thead>
               <tr>
                 <th style="width:200px;">会社名</th>

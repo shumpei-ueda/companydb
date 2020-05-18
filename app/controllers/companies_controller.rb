@@ -29,7 +29,7 @@ class CompaniesController < ApplicationController
     @all_industries = Industry.all
     @all_sectors = Sector.all
     @prefectures = params[:prefectures]&.map(&:to_i)
-    @per = params[:per]
+    # @per = params[:per]
     # @order = params[:order]
 
 
@@ -41,7 +41,9 @@ class CompaniesController < ApplicationController
     @companies = @companies.where("mynavi_flag > 0") if @use_mynavi = !!params[:mynavi]
     # @companies = @companies.order(@order => "DESC") if @order.present?
 
-    @results = @companies == DemoCompany || !@companies ? [] : @companies.page(params[:page]).per(@per)
+    # @results = @companies == DemoCompany || !@companies ? [] : @companies.page(params[:page]).per(@per)
+    @results = @companies == DemoCompany || !@companies ? [] : @companies
+
     @count = @companies.count
     render("companies/search_form")
 
