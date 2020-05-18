@@ -35,7 +35,7 @@ class CompaniesController < ApplicationController
 
 
     @companies = DemoCompany
-    @companies = @companies.where('name like ?', "%#{@company_name.tr("a-zA-Z0-9&',.-", "ａ-ｚＡ-Ｚ０-９＆’，．－")}%") if @company_name.present?
+    @companies = @companies.where('name like ?', "%#{@company_name.tr("a-zA-Z0-9&',. -", "ａ-ｚＡ-Ｚ０-９＆’，．　－")}%") if @company_name.present?
     @companies = @companies.where(prefecture_id: @prefectures) if @prefectures.present?
     @companies = @companies.where("prtimes_flag > 0") if @use_prtimes = !!params[:prtimes]
     @companies = @companies.where("mynavi_flag > 0") if @use_mynavi = !!params[:mynavi]
