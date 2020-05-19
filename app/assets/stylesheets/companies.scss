@@ -686,8 +686,9 @@ table tbody tr:nth-child(odd) th {
   width: 80%;
 }
 .address div{
-  margin: 0; /* 要素の外側の余白を0に定義 */
-  padding: 10px;
+  margin-bottom: 2px;
+  display:  inline-block;
+  margin-right: 10px;
 }
 .area {
   float: left;
@@ -696,3 +697,13 @@ table tbody tr:nth-child(odd) th {
 .area label{
   color: dimgray;
 }
+.flat-red{
+  color: #00a65a;
+}
+ .div-tihou{
+   width: 90px;
+}
+.div-prefecture label{
+  padding-right: 10px;
+}
+
