@@ -12,281 +12,281 @@
 
 
       <%= form_with url: "/companies/search", method: :get, local: true do |f| %>
-        <div class="col-lg-3 col-md-6">
+      <div class="col-lg-3 col-md-6">
 
-          <div class="box box-info collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">フリーワード</h3>
-            </div>
-
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <label>企業名を検索</label>
-                  <%= f.text_field :company_name, value: @company_name, placeholder: "検索キーワードを入力", style: "width: 90%;", class: "form-control", id: "id_keyword" %>
-                </div>
-              </div>
-            </div>
+        <div class="box box-info collapsed-box">
+          <div class="box-header with-border">
+            <h3 class="box-title">フリーワード</h3>
           </div>
 
-          <div class="box box-info collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">本社所在地</h3>
-            </div>
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <label>都道府県を選択</label>
-                </div>
-                <div class="col-md-12 address">
-                  <div class="div-tihou">
-                    <label class="tihou">北海道・東北</label>
-                  </div>
-                  <div class="div-prefecture">
-                    <%= f.collection_check_boxes :prefectures, @hokkaido_tohoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                  </div>
-                </div>
-                <div class="col-md-12 address">
-                  <!--                  <div class="hidden_box">-->
-                  <div class="div-tihou">
-                    <label class="tihou" for="label2">関東</label>
-                  </div>
-                  <!--                <input class="hidden_button" type="checkbox" id="label2" />-->
-                  <!--                    <div class="hidden_show">-->
-                  <div class="div-prefecture">
-                    <%= f.collection_check_boxes :prefectures, @kantou, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                  </div>
-                </div>
-                <div class="col-md-12 address">
-                  <div class="div-tihou">
-                    <label class="tihou">北陸・東海</label>
-                  </div>
-                  <div class="div-prefecture">
-                    <%= f.collection_check_boxes :prefectures, @hokuriku_toukai, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                  </div>
-                </div>
-                <div class="col-md-12 address">
-                  <div class="div-tihou">
-                    <label class="tihou">近畿</label>
-                  </div>
-                  <div class="div-prefecture">
-                    <%= f.collection_check_boxes :prefectures, @kinki, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                  </div>
-                </div>
-                <div class="col-md-12 address">
-                  <div class="div-tihou">
-                    <label class="tihou">中国</label>
-                  </div>
-                  <div class="div-prefecture">
-                    <%= f.collection_check_boxes :prefectures, @tyugoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                  </div>
-                </div>
-                <div class="col-md-12 address">
-                  <div class="div-tihou">
-                    <label class="tihou">四国</label>
-                  </div>
-                  <div class="div-prefecture">
-                    <%= f.collection_check_boxes :prefectures, @shikoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                  </div>
-                </div>
-                <div class="col-md-12 address">
-                  <div class="div-tihou">
-                    <label class="tihou">九州・沖縄</label>
-                  </div>
-                  <div class="div-prefecture">
-                    <%= f.collection_check_boxes :prefectures, @kyushu, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
-                  </div>
-                </div>
-
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-12">
+                <label>企業名を検索</label>
+                <%= f.text_field :company_name, value: @company_name, placeholder: "検索キーワードを入力", style: "width: 90%;", class: "form-control", id: "id_keyword" %>
               </div>
             </div>
-          </div>
-
-
-          <div class="box box-info collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">広報/広告/ツール</h3>
-            </div>
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <%= f.check_box :prtimes, {size: 3, class: "flat-red", checked: @use_prtimes}, true, false %>
-                  <label for="prtimes">PRTIMES</label>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="box box-info collapsed-box">
-            <div class="box-header with-border">
-              <h3 class="box-title">求人媒体</h3>
-            </div>
-
-            <div class="box-body">
-              <div class="row">
-                <div class="col-md-12">
-                  <label>中途媒体</label>
-                </div>
-                <div class="col-md-12">
-                  <%= f.check_box :mynavi, {size: 3, class: "flat-red", checked: @use_mynavi}, true, false %>
-                  <label for="mynavi">マイナビ</label>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!--          <div class="box box-info collapsed-box">-->
-          <!--            <div class="box-header with-border">-->
-          <!--              <h3 class="box-title">並び替え</h3>-->
-          <!--            </div>-->
-
-          <!--            <div class="box-body">-->
-          <!--              <div class="row">-->
-          <!--                <div class="col-md-12">-->
-          <%#= f.select 'order', options_for_select({"指定なし": nil, "PRTIMES掲載件数が多い順": "prtimes_flag", "マイナビ転職掲載件数が多い順": "mynavi_flag"}, @order) %>
-          <!--                </div>-->
-          <!--              </div>-->
-          <!--            </div>-->
-          <!--          </div>-->
-
-
-        </div>
-        <div class="row">
-          <div class="col-md-12" style="text-align:center">
-            <%= f.submit "この条件で検索する", class: "btn btn-primary", style: "width:90%", name: nil %>
           </div>
         </div>
+
+        <div class="box box-info collapsed-box">
+          <div class="box-header with-border">
+            <h3 class="box-title">本社所在地</h3>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-12">
+                <label>都道府県を選択</label>
+              </div>
+              <div class="col-md-12 address">
+                <div class="div-tihou">
+                  <label class="tihou">北海道・東北</label>
+                </div>
+                <div class="div-prefecture">
+                  <%= f.collection_check_boxes :prefectures, @hokkaido_tohoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
+                </div>
+              </div>
+              <div class="col-md-12 address">
+                <!--                  <div class="hidden_box">-->
+                <div class="div-tihou">
+                  <label class="tihou" for="label2">関東</label>
+                </div>
+                <!--                <input class="hidden_button" type="checkbox" id="label2" />-->
+                <!--                    <div class="hidden_show">-->
+                <div class="div-prefecture">
+                  <%= f.collection_check_boxes :prefectures, @kantou, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
+                </div>
+              </div>
+              <div class="col-md-12 address">
+                <div class="div-tihou">
+                  <label class="tihou">北陸・東海</label>
+                </div>
+                <div class="div-prefecture">
+                  <%= f.collection_check_boxes :prefectures, @hokuriku_toukai, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
+                </div>
+              </div>
+              <div class="col-md-12 address">
+                <div class="div-tihou">
+                  <label class="tihou">近畿</label>
+                </div>
+                <div class="div-prefecture">
+                  <%= f.collection_check_boxes :prefectures, @kinki, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
+                </div>
+              </div>
+              <div class="col-md-12 address">
+                <div class="div-tihou">
+                  <label class="tihou">中国</label>
+                </div>
+                <div class="div-prefecture">
+                  <%= f.collection_check_boxes :prefectures, @tyugoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
+                </div>
+              </div>
+              <div class="col-md-12 address">
+                <div class="div-tihou">
+                  <label class="tihou">四国</label>
+                </div>
+                <div class="div-prefecture">
+                  <%= f.collection_check_boxes :prefectures, @shikoku, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
+                </div>
+              </div>
+              <div class="col-md-12 address">
+                <div class="div-tihou">
+                  <label class="tihou">九州・沖縄</label>
+                </div>
+                <div class="div-prefecture">
+                  <%= f.collection_check_boxes :prefectures, @kyushu, :id, :name, checked: @prefectures, size: 3, class: "flat-red", include_hidden: false %>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
-        </section>
-        <section class="content-header" id="data_example">
-          <h1>
-            検索結果
-            <% if @results.present? %>
-              <small><%= "#{@count}件取得" %>
-                <%#= select_tag 'per', options_for_select([25, 50, 100, 200], @per), onchange: "this.form.submit()" %>
-                <%#= paginate @results %>
-              </small>
-            <% else %>
-              <small>検索を行うと結果が出力されます。</small>
-            <% end %>
+
+
+        <div class="box box-info collapsed-box">
+          <div class="box-header with-border">
+            <h3 class="box-title">広報/広告/ツール</h3>
+          </div>
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-12">
+                <%= f.check_box :prtimes, {size: 3, class: "flat-red", checked: @use_prtimes}, true, false %>
+                <label for="prtimes">PR TIMES</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="box box-info collapsed-box">
+          <div class="box-header with-border">
+            <h3 class="box-title">求人媒体</h3>
+          </div>
+
+          <div class="box-body">
+            <div class="row">
+              <div class="col-md-12">
+                <label>中途媒体</label>
+              </div>
+              <div class="col-md-12">
+                <%= f.check_box :mynavi, {size: 3, class: "flat-red", checked: @use_mynavi}, true, false %>
+                <label for="mynavi">マイナビ転職</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--          <div class="box box-info collapsed-box">-->
+        <!--            <div class="box-header with-border">-->
+        <!--              <h3 class="box-title">並び替え</h3>-->
+        <!--            </div>-->
+
+        <!--            <div class="box-body">-->
+        <!--              <div class="row">-->
+        <!--                <div class="col-md-12">-->
+        <%#= f.select 'order', options_for_select({"指定なし": nil, "PRTIMES掲載件数が多い順": "prtimes_flag", "マイナビ転職掲載件数が多い順": "mynavi_flag"}, @order) %>
+        <!--                </div>-->
+        <!--              </div>-->
+        <!--            </div>-->
+        <!--          </div>-->
+
+
+      </div>
+      <div class="row">
+        <div class="col-md-12" style="text-align:center">
+          <%= f.submit "この条件で検索する", class: "btn btn-primary", style: "width:90%", name: nil %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="content-header" id="data_example">
+    <h1>
+      検索結果
+      <% if @results.present? %>
+      <small><%= "#{@count}件取得" %>
+        <%#= select_tag 'per', options_for_select([25, 50, 100, 200], @per), onchange: "this.form.submit()" %>
+        <%#= paginate @results %>
+      </small>
+      <% else %>
+      <small>検索を行うと結果が出力されます。</small>
       <% end %>
-      </h1>
-      </section>
-      <div id="pager" class="pager tablesorter-pager">
-        <!--        <button type='button' class='first'>&lt;&lt;</button>-->
-        <!--        <button type='button' class='prev'>&lt;</button>-->
+      <% end %>
+    </h1>
+  </section>
+  <div id="pager" class="pager tablesorter-pager">
+    <!--        <button type='button' class='first'>&lt;&lt;</button>-->
+    <!--        <button type='button' class='prev'>&lt;</button>-->
 
-        <!--        <span class="pagedisplay" value=""/>-->
-        <!--        <input type="text" class="pagedisplay"/>-->
+    <!--        <span class="pagedisplay" value=""/>-->
+    <!--        <input type="text" class="pagedisplay"/>-->
 
-        <!--        <button type='button' class='next'>&gt;</button>-->
-        <!--        <button type='button' class='last'>&gt;&gt;</button>-->
+    <!--        <button type='button' class='next'>&gt;</button>-->
+    <!--        <button type='button' class='last'>&gt;&gt;</button>-->
 
-        <!--        <select class="pagesize">-->
-        <!--          <option value="10">10</option>-->
-        <!--          <option value="20">20</option>-->
-        <!--          <option value="30">30</option>-->
-        <form>
-          <!--          <img src="/content/lib/tablesorter/addons/pager/icons/first.png" class="first"/>-->
-          <button type='button' class='first'>&lt;&lt;</button>
-          <!--          <img src="/content/lib/tablesorter/addons/pager/icons/prev.png" class="prev"/>-->
-          <button type='button' class='prev'>&lt;</button>
-          <input type="text" class="pagedisplay"/>
-          <!--          <img src="/content/lib/tablesorter/addons/pager/icons/next.png" class="next"/>-->
-          <button type='button' class='next'>&gt;</button>
-          <button type='button' class='last'>&gt;&gt;</button>
-          <select class="pagesize">
-            <option selected="selected" value="25">25</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-            <option value="200">200</option>
-          </select>
-        </form>
-        </select>
-      </div>
-      <section class="content">
-        <div class="box">
-          <div class=" box-body-table table-responsive">
-            <table id="example1" class="table table-bordered table-striped tablesorter pager-table" style="table-layout:fixed;">
-              <thead>
-              <tr>
-                <th style="width:200px;">会社名</th>
-                <th style="width:100px;">業界</th>
-                <th style="width:100px;">業種</th>
-                <th style="width:100px;">代表者氏名</th>
-                <th style="width:300px;">本社所在地</th>
-                <th style="width:100px;">資本金</th>
-                <th style="width:100px;">従業員数</th>
-                <th style="width:100px;">上場区分</th>
-<!--                <th style="width:100px;">設立年月日</th>-->
-                <th style="width:150px;">電話番号</th>
-<!--                <th style="width:150px;">FAX番号</th>-->
-<!--                <th style="width:150px;">採用電話番号</th>-->
-<!--                <th style="width:150px;">採用メールアドレス</th>-->
-<!--                <th style="width:150px;">問合せフォーム</th>-->
-                <th style="width:150px;">会社URL</th>
-                <th style="width:150px;">Facebook</th>
-                <th style="width:150px;">Twitter</th>
-                <th style="width:150px;">法人番号</th>
-                <th style="width:100px;">PR TIMES掲載件数</th>
-                <th style="width:100px;">マイナビ転職掲載件数</th>
-              </tr>
-              </thead>
-              <tbody>
-              <% if @results.present? %>
-                <% @results.each do |result| %>
-                  <tr>
-                    <th style="width:200px;"><%= result[:name] %></th>
-                    <!--  <td><%#= result[:industry] %></td>-->
-                    <td style="width:100px;">実装中</td>
-                    <!--      <td><%#= result[:sector] %></td>-->
-                    <td style="width:100px;">実装中</td>
-                    <td style="width:100px;"><%= result[:president_name] %></td>
-                    <td style="width:300px;"><%= result[:address] %></td>
-                    <td style="width:100px;"><%= result[:capital] %></td>
-                    <td style="width:100px;"><%= result[:employee] %></td>
-                    <td style="width:100px;"><%= result[:listing] %></td>
-<!--                    <td style="width:100px;"><%#= result[:established_date] %></td>-->
-                    <td style="width:150px;"><%= result[:phone_number] %></td>
-<!--                    <td style="width:150px;"><%#= result[:fax_number] %></td>-->
-<!--                    <td style="width:150px;"><%#= result[:adoption_phone_number] %></td>-->
-<!--                    <td style="width:150px;"><%#= result[:adoption_email_address] %></td>-->
-<!--                    <td style="width:150px;"><%#= result[:contact_form] %></td>-->
-                    <td style="width:150px;">
-                      <% if result[:web_url].present? %>
-                        <%= link_to result[:web_url], result[:web_url], target: :_blank %>
-                      <% else %>
-                        <%= "" %>
-                      <% end %>
-                    </td>
-                    <td style="width:150px;">
-                      <% if result[:facebook_url].present? %>
-                        <%= link_to result[:facebook_url], result[:facebook_url], target: :_blank %>
-                      <% else %>
-                        <%= "" %>
-                      <% end %>
-                    </td>
-                    <td style="width:150px;">
-                      <% if result[:twitter_url].present? %>
-                        <%= link_to result[:twitter_url], result[:twitter_url], target: :_blank %>
-                      <% else %>
-                        <%= "" %>
-                      <% end %>
-                    </td>
-                    <td style="width:150px;"><%= result[:corporate_num] %></td>
-                    <td style="width:100px;"><%= result[:prtimes_flag] %></td>
-                    <td style="width:100px;"><%= result[:mynavi_flag] %></td>
-                  </tr>
+    <!--        <select class="pagesize">-->
+    <!--          <option value="10">10</option>-->
+    <!--          <option value="20">20</option>-->
+    <!--          <option value="30">30</option>-->
+    <form>
+      <!--          <img src="/content/lib/tablesorter/addons/pager/icons/first.png" class="first"/>-->
+      <button type='button' class='first'>&lt;&lt;</button>
+      <!--          <img src="/content/lib/tablesorter/addons/pager/icons/prev.png" class="prev"/>-->
+      <button type='button' class='prev'>&lt;</button>
+      <input type="text" class="pagedisplay" />
+      <!--          <img src="/content/lib/tablesorter/addons/pager/icons/next.png" class="next"/>-->
+      <button type='button' class='next'>&gt;</button>
+      <button type='button' class='last'>&gt;&gt;</button>
+      <select class="pagesize">
+        <option selected="selected" value="25">25</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="200">200</option>
+      </select>
+    </form>
+    </select>
+  </div>
+  <section class="content">
+    <div class="box">
+      <div class=" box-body-table table-responsive">
+        <table id="example1" class="table table-bordered table-striped tablesorter pager-table" style="table-layout:fixed;">
+          <thead>
+            <tr>
+              <th style="width:200px;">会社名</th>
+              <th style="width:100px;">業界</th>
+              <th style="width:100px;">業種</th>
+              <th style="width:100px;">代表者氏名</th>
+              <th style="width:300px;">本社所在地</th>
+              <th style="width:100px;">資本金</th>
+              <th style="width:100px;">従業員数</th>
+              <th style="width:100px;">上場区分</th>
+              <!--                <th style="width:100px;">設立年月日</th>-->
+              <th style="width:150px;">電話番号</th>
+              <!--                <th style="width:150px;">FAX番号</th>-->
+              <!--                <th style="width:150px;">採用電話番号</th>-->
+              <!--                <th style="width:150px;">採用メールアドレス</th>-->
+              <!--                <th style="width:150px;">問合せフォーム</th>-->
+              <th style="width:150px;">会社URL</th>
+              <th style="width:150px;">Facebook</th>
+              <th style="width:150px;">Twitter</th>
+              <th style="width:150px;">法人番号</th>
+              <th style="width:100px;">PR TIMES掲載件数</th>
+              <th style="width:100px;">マイナビ転職掲載件数</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @results.present? %>
+            <% @results.each do |result| %>
+            <tr>
+              <th style="width:200px;"><%= result[:name] %></th>
+              <!--  <td><%#= result[:industry] %></td>-->
+              <td style="width:100px;">実装中</td>
+              <!--      <td><%#= result[:sector] %></td>-->
+              <td style="width:100px;">実装中</td>
+              <td style="width:100px;"><%= result[:president_name] %></td>
+              <td style="width:300px;"><%= result[:address] %></td>
+              <td style="width:100px;"><%= result[:capital] %></td>
+              <td style="width:100px;"><%= result[:employee] %></td>
+              <td style="width:100px;"><%= result[:listing] %></td>
+              <!--                    <td style="width:100px;"><%#= result[:established_date] %></td>-->
+              <td style="width:150px;"><%= result[:phone_number] %></td>
+              <!--                    <td style="width:150px;"><%#= result[:fax_number] %></td>-->
+              <!--                    <td style="width:150px;"><%#= result[:adoption_phone_number] %></td>-->
+              <!--                    <td style="width:150px;"><%#= result[:adoption_email_address] %></td>-->
+              <!--                    <td style="width:150px;"><%#= result[:contact_form] %></td>-->
+              <td style="width:150px;">
+                <% if result[:web_url].present? %>
+                <%= link_to result[:web_url], result[:web_url], target: :_blank %>
+                <% else %>
+                <%= "" %>
                 <% end %>
-              <% end %>
-              </tbody>
-            </table>
-          </div>
-          <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-
-      </section>
+              </td>
+              <td style="width:150px;">
+                <% if result[:facebook_url].present? %>
+                <%= link_to result[:facebook_url], result[:facebook_url], target: :_blank %>
+                <% else %>
+                <%= "" %>
+                <% end %>
+              </td>
+              <td style="width:150px;">
+                <% if result[:twitter_url].present? %>
+                <%= link_to result[:twitter_url], result[:twitter_url], target: :_blank %>
+                <% else %>
+                <%= "" %>
+                <% end %>
+              </td>
+              <td style="width:150px;"><%= result[:corporate_num] %></td>
+              <td style="width:100px;"><%= result[:prtimes_flag] %></td>
+              <td style="width:100px;"><%= result[:mynavi_flag] %></td>
+            </tr>
+            <% end %>
+            <% end %>
+          </tbody>
+        </table>
       </div>
+      <!-- /.box-body -->
+    </div>
+    <!-- /.box -->
+
+  </section>
+</div>
 <!--<div class="main ">-->
 <!--  <div class="container-co">-->
 <!--    <div class="form-heading-co">企業検索</div>-->
