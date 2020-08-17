@@ -14,14 +14,26 @@ class Instagram::InstagramService < BaseService
     # @driver.manage.timeouts.implicit_wait = 30
 
 
-    @wait_time = 120
-    @timeout = 120
-    Selenium::WebDriver.logger.output = File.join("./", "selenium.log")
-    Selenium::WebDriver.logger.level = :warn
-    @driver = Selenium::WebDriver.for :chrome
-    @driver.manage.timeouts.implicit_wait = @timeout
-    wait = Selenium::WebDriver::Wait.new(timeout: @wait_time)
-    @driver.navigate.to 'https://www.instagram.com/accounts/login/?source=auth_switcher'
+    # @wait_time = 120
+    # @timeout = 120
+    # Selenium::WebDriver.logger.output = File.join("./", "selenium.log")
+    # Selenium::WebDriver.logger.level = :warn
+    # @driver = Selenium::WebDriver.for :chrome
+    # @driver.manage.timeouts.implicit_wait = @timeout
+    # wait = Selenium::WebDriver::Wait.new(timeout: @wait_time)
+    # @driver.navigate.to 'https://www.instagram.com/accounts/login/?source=auth_switcher'
+    # @driver.find_element(:name, 'username').send_keys(username)
+    # @driver.find_element(:name, 'password').send_keys(password)
+    # sleep 1
+    # @driver.find_element(:name, 'password').send_keys(:return)
+    # Selenium::WebDriver::Chrome.driver_path = "/mnt/c/chromedriver.exe"
+    ua = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36'
+    caps = Selenium::WebDriver::Remote::Capabilities.chrome('chromeOptions' => { args: ["--user-agent=#{ua}", 'window-size=1280x800', '--incognito'] }) # シークレットモード
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 300
+    @driver = Selenium::WebDriver.for :chrome, desired_capabilities: caps, http_client: client
+    @driver.manage.timeouts.implicit_wait = 30
+    @driver.navigate.to'https://www.instagram.com/accounts/login/?source=auth_switcher'
     @driver.find_element(:name, 'username').send_keys(username)
     @driver.find_element(:name, 'password').send_keys(password)
     sleep 1
