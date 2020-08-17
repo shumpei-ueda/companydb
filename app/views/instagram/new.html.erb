@@ -1,14 +1,19 @@
 <body>
 <div class="instagram">
+  <h1>
+    ハッシュタグで検索した投稿にいいねとフォローを行う
+  </h1>
   <%= form_tag("/instagram/like") do %>
     <p>アカウント名</p>
-    <input name="account_name" value="">
+    <input class="account" name="account_name" value="">
     <p>パスワード</p>
-    <input name="password" value="">
-    <p>検索ハッシュタグ</p>
-    <input name="key_word" value="">
-    <p>いいね数</p>
-    <input name="count" value="">
+    <input class="password" name="password" value="">
+    <p>検索ハッシュタグ（#は入れない）</p>
+    <input class="hashtag" name="key_word" value="">
+    <p>フォローするアカウントのフォロワー制限（指定しない場合は1000）</p>
+    <input class="follower"name="count" value="">
+    <p>実行数（50以下に設定、指定しない場合は10）</p>
+    <input class="like"name="count" value="">
     <input class="instagram_button" type="submit" value="実行">
   <% end %>
 </div>

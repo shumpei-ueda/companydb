@@ -26,60 +26,7 @@
   <div class="wrapper" style="height:  auto; min-height: 100%;">
     <header class="main-header">
 
-      <% if @current_user %>
-      <%= link_to("デモ", "/home/top",  {class: "logo"}) %>
-      <% else %>
-      <%= link_to("デモ", "/home/top",{class: "logo"}) %>
-      <% end %>
-      <nav class="navbar navbar-static-top">
-        <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <% if @current_user %>
-            <li class="dropdown user user-menu">
-              <%= link_to("ログアウト", "/logout", {method: :post, class: "user-menu-link"}) %>
-            </li>
-            <% else %>
-            <li class="dropdown user user-menu">
-              <%= link_to("新規登録", "/signup") %>
-            </li>
-            <li class="dropdown user user-menu">
-              <%= link_to("ログイン", "/login") %>
-            </li>
-            <% end %>
-            </li>
-          </ul>
-        </div>
-
-      </nav>
     </header>
-    <% if @current_user %>
-    <aside class="main-sidebar">
-      <!-- sidebar: style can be found in sidebar.less -->
-      <section class="sidebar">
-        <!-- /.search form -->
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu tree" data-widget="tree">
-
-          <li class="header">営業リスト作成</li>
-          <li class="active">
-
-            <!--          <a href="/">-->
-            <!--            <i class="fa fa-industry text-yellow"></i><span><strong>企業データベース</strong></span>-->
-            <!--          </a>-->
-            <%= link_to("企業データベース", "/companies/search",  {class: "fa fa-industry "}) %>
-          </li>
-        </ul>
-      </section>
-    </aside>
-    <% end %>
-
-
-    <%# if flash[:notice] %>
-    <!--  <div class="flash">-->
-    <%#= flash[:notice] %>
-    <!--  </div>-->
-    <%# end %>
 
 
     <%= yield %>

@@ -65,7 +65,7 @@ class Instagram::InstagramService < BaseService
     }
   end
 
-  def good_and_follow(key_word, number)
+  def good_and_follow(key_word, number, follower_count)
     encode_word = URI.encode(key_word)
     account_lists = []
     sleep 3
@@ -87,12 +87,16 @@ class Instagram::InstagramService < BaseService
       sleep 2
     }
     if account_lists.present?
-      account_lists.each do|account|
-        @driver.navigate.to "https://www.instagram.com/#{account}/"
-        e_f = @driver.find_element(:css, '#react-root > section > main > div > ul > li:nth-child(2) > a > span')
-        follower = e_f.text.to_i if e_f.present?
-        if follower < 3000
-          @driver.execute_script("document.querySelector('#react-root > section > main > div > header > section > div.Y2E37 > div > div > span > span.vBF20._1OSdk > button').click()")
+      account_lists.each do |account|
+        begin
+          @driver.navigate.to "https://www.instagram.com/#{account}/"
+          e_f = @driver.find_element(:css, '#react-root > section > main > div > ul > li:nth-child(2) > a > span')
+          follower = e_f.text.to_i if e_f.present?
+          if follower <= follower_count
+            @driver.execute_script("document.querySelector('#react-root > section > main > div > header > section > div.Y2E37 > div > div > span > span.vBF20._1OSdk > button').click()")
+          end
+        rescue
+          next
         end
       end
     end
