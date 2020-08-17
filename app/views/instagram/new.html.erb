@@ -1,0 +1,16 @@
+<body>
+<div class="instagram">
+  <%= form_tag("/instagram/like") do %>
+    <p>アカウント名</p>
+    <input name="account_name" value="">
+    <p>パスワード</p>
+    <input name="password" value="">
+    <p>検索ハッシュタグ</p>
+    <input name="key_word" value="">
+    <p>いいね数</p>
+    <input name="count" value="">
+    <input class="instagram_button" type="submit" value="実行">
+  <% end %>
+</div>
+
+</body>

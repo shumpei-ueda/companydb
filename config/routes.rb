@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'instagram/new'
   get 'customers/new'
   post 'customers/create' => "customers#create"
   get 'get_companies/get_from_api'
@@ -13,6 +14,7 @@ Rails.application.routes.draw do
   post 'users/:id/update' => "users#update"
   get 'home/top'
   post 'logout' => "users#logout"
+  post 'instagram/like' => "instagram#like"
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

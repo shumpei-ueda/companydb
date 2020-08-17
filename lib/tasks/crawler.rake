@@ -13,4 +13,9 @@ namespace :crawler do
   task :crawling_pr_times, ['page'] => :environment do |task, args|
     Crawler.crawling_pr_times(args)
   end
+
+  desc "テスト"
+  task :test, ['page'] => :environment do
+    Crawler.test_mynavi
+  end
 end

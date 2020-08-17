@@ -3,6 +3,7 @@ gem "activerecord-import"
 require "uri"
 require "open-uri"
 require "nokogiri"
+require "mechanize"
 
 module Crawler
   extend self
@@ -31,12 +32,12 @@ module Crawler
     if !regions.include?(_region) then
       raise "regionは#{regions.join(", ")}の中から指定してください."
     end
-    
+
     if !["true", "false", false].include?(_is_only) then
       raise "各地域のみ募集のページから始めるかを、true,falseで指定してください."
     end
     _is_only = _is_only == "true"
-    
+
     begin
       _page = Integer(_page)
     rescue => e
@@ -45,7 +46,7 @@ module Crawler
     if _page < 1 then
       raise "pageは1以上で指定してください"
     end
-   
+
     base_url = "https://tenshoku.mynavi.jp"
     regions[regions.index(_region)..].each do |region|
       for is_only in [false, true] do
@@ -53,7 +54,7 @@ module Crawler
           _is_only = false
           next
         end
-        
+
         page = 1
         if _page > 1 then
           page = _page
@@ -111,6 +112,23 @@ module Crawler
                   company_hash[:web_url] = data
                 end
               end
+              detail_doc.xpath("//script/text()").each do |script|
+                array = script.content.split(" ")
+                num = array.index("jobInfo_planId")
+                if num.present?
+                  company_hash[:plan_id] = array[num + 2].delete(";").to_i #  var jobInfo_planId  が欲しい
+                end
+              end
+              detail_doc.css(".dateInfo").each do |date_info|
+                date_info.children.each do |date|
+                  str = date.content
+                  if str.include?("情報更新日")
+                    company_hash[:edit_date] = str.delete("情報更新日：")
+                  elsif str.include?("掲載終了予定日")
+                    company_hash[:finish_date] = str.delete("掲載終了予定日：")
+                  end
+                end
+              end
             when "mynavi.agentsearch.jp" then
               detail_doc.css(".table-e dl > dt").zip(detail_doc.css(".table-e dl > dd")).each do |dt, dd|
                 key = dt.content.strip
@@ -146,7 +164,7 @@ module Crawler
     if page < 1 then
       raise "pageは1以上で指定してください"
     end
-    
+
     while true do
       companies = []
       sleep 1
@@ -160,12 +178,12 @@ module Crawler
       end
 
 
-      doc.css(".list-article__company-name-link").zip(doc.css(".list-article__company-name--dummy"), doc.css(".list-article__time"),doc.css(".list-article__link")).each do |detail_link, company_name, time,pr_url|
+      doc.css(".list-article__company-name-link").zip(doc.css(".list-article__company-name--dummy"), doc.css(".list-article__time"), doc.css(".list-article__link")).each do |detail_link, company_name, time, pr_url|
         company_hash = {}
         detail_link = URI.join(base_url, detail_link["href"])
         company_hash[:name] = company_name.content.strip
         company_hash[:pr_datetime] = time["datetime"].to_datetime
-        company_hash[:pr_url] =  base_url + pr_url["href"]
+        company_hash[:pr_url] = base_url + pr_url["href"]
         sleep 1
         begin
           detail_doc = Nokogiri::HTML(open(detail_link))
@@ -201,5 +219,54 @@ module Crawler
     end
   end
 
+  def test_mynavi
+    base_url = "https://next.rikunabi.com"
+    search_link = "#{base_url}/lst/crn1.html"
+    agent = Mechanize.new
+    begin
+      main_page = agent.get(search_link)
+    rescue => e
+      p e
+    end
+    search_form = main_page.form
+    search_form['wrk_plc_long_cd'] = '0523000000'
+    search_form['wrk_plc_long_cd'] = '0523100000'
+    search_form['l_screen_id'] = 'cp_s00700'
+    search_form['ov_wrt_aprvl_f'] = '0'
+   search_form['h_ofc_f'] = '0'
+    search_form['l_srch_id'] = 'cp_s00700'
+    search_form['disp_cd'] = 'cp_s01990'
+    doc = search_form.submit
+    # p doc
+    detail_links = []
+      doc.search(".rnn-linkText--black").each do |detail_link|
+        detail_link = URI.join(base_url, detail_link["href"].sub(/nx1/, 'nx2'))
+        detail_links << detail_link
+      end
+    p doc.at('.rnn-pageNumber.rnn-textXl').content
+  end
 end
 
+# l_screen_id: cp_s00700
+# ov_wrt_aprvl_f: 0
+# h_ofc_f: 0
+# srch_ann_inc_cd_to:
+#     keyword_input:
+#     l_srch_id: cp_s00700
+# galileo:
+#     disp_cd: cp_s01990
+# wrk_plc_long_cd: 0100000000
+# srch_ann_inc_cd_from:
+#
+#     l_screen_id: cp_s00700
+# ov_wrt_aprvl_f: 0
+# h_ofc_f: 0
+# srch_ann_inc_cd_to:
+#     keyword_input:
+#     l_srch_id: cp_s00700
+# galileo:
+#     disp_cd: cp_s01990
+# wrk_plc_long_cd: 0202000000
+# srch_ann_inc_cd_from:
+#
+#
